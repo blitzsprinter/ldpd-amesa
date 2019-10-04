@@ -1,0 +1,107 @@
+<%= form_with(model: scholar, local: true) do |form| %>
+  <% if scholar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scholar.errors.count, "error") %> prohibited this scholar from being saved:</h2>
+
+      <ul>
+        <% scholar.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :region_of_study %>
+    <%= form.text_field :region_of_study %>
+  </div>
+
+  <div class="field">
+    <%= form.label :primary_country_of_residence %>
+    <%= form.text_field :primary_country_of_residence %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :affiliation %>
+    <%= form.text_field :affiliation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mailing_address %>
+    <%= form.text_area :mailing_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_fax_numbers %>
+    <%= form.text_area :phone_fax_numbers %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :countries_of_specialization %>
+    <%= form.text_area :countries_of_specialization %>
+  </div>
+
+  <div class="field">
+    <%= form.label :education %>
+    <%= form.text_area :education %>
+  </div>
+
+  <div class="field">
+    <%= form.label :research_interests %>
+    <%= form.text_area :research_interests %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teaching_interests %>
+    <%= form.text_area :teaching_interests %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publications %>
+    <%= form.text_area :publications %>
+  </div>
+
+  <div class="field">
+    <%= form.label :keywords %>
+    <%= form.text_field :keywords %>
+  </div>
+
+  <div class="field">
+    <%= form.label :optional_message %>
+    <%= form.text_area :optional_message %>
+  </div>
+
+  <div class="field">
+    <%= form.label :submitter_email %>
+    <%= form.text_field :submitter_email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LdpdAmesa</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Not sure I need the following stylesheet_pack_tag, one video tutorial said was needed for production-->
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-1">
+	<ul class="nav flex-column">
+	  <li class="nav-header">AMESA</li>
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/pages/about">About AMESA</a></li>
+	  <li><a href="/scholars/add">Submit A New Entry</a></li>
+	  <li class="nav-header">View Scholars</li>
+	  <li><a href="/scholars">All Regions</a></li>
+	  <li><a href="/scholars/index/africa">Africa</a></li>
+	  <li class="active"><a href="/scholars/index/middle_east">Middle East</a></li>
+	  <li><a href="/scholars/index/south_asia">South Asia</a></li>
+	  <li class="nav-header">Admin</li>
+	  <li><a href="/admin/login">Login</a></li>
+	  <li class="nav-header">Language</li>
+	  <li><form id="eng_form" action="/scholars/index/middle_east" method="post">
+	      <fieldset>
+		<input type="hidden" name="site_language" value="eng" />
+		<input type="submit" value="English" class="btn btn-mini active"/>
+	      </fieldset>
+	    </form>
+	  </li>
+	  <li>
+	    <form id="fra_form" action="/scholars/index/middle_east" method="post">
+	      <fieldset>
+		<input type="hidden" name="site_language" value="fra" />
+		<input type="submit" value="Français" class="btn btn-mini"/>
+	      </fieldset>
+	    </form>
+	  </li>
+	</ul>
+      </div>
+      <div class="col-11">
+	<%= image_tag "amesa-landscape.jpg" %>
+	<%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
