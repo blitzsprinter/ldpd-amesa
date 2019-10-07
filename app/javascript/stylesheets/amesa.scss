@@ -1,1 +1,43 @@
 @import '~bootstrap/scss/bootstrap.scss';
+
+.banner {
+    .amesa-overlay-text {
+	padding: 1em;
+	background-color: rgba(245, 245, 245, .5)
+    }
+}
+
+.home-page {
+    .btn-sm {
+	border: 1px solid;
+    }
+}
+
+.language-select {
+    .btn-sm {
+	border: 1px solid;
+	margin: 0.5em;
+    }
+}
+
+.sidebar-nav {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    border: 1px;
+
+    a, a:visited, a:hover, a:active {
+	color: #0088cc;
+    }
+    .nav {
+	padding: 1em;
+    }
+    .nav-link {
+	padding: 3px 15px;
+    }
+}
+
+.view-scholar {
+    .btn {
+	border: 1px solid;
+    }
+}

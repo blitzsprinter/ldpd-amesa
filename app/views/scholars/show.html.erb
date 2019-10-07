@@ -1,94 +1,34 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @scholar.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @scholar.last_name %>
-</p>
-
-<p>
-  <strong>Region of study:</strong>
-  <%= @scholar.region_of_study %>
-</p>
-
-<p>
-  <strong>Primary country of residence:</strong>
-  <%= @scholar.primary_country_of_residence %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @scholar.title %>
-</p>
-
-<p>
-  <strong>Affiliation:</strong>
-  <%= @scholar.affiliation %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @scholar.email %>
-</p>
-
-<p>
-  <strong>Mailing address:</strong>
-  <%= @scholar.mailing_address %>
-</p>
-
-<p>
-  <strong>Phone fax numbers:</strong>
-  <%= @scholar.phone_fax_numbers %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @scholar.website %>
-</p>
-
-<p>
-  <strong>Countries of specialization:</strong>
-  <%= @scholar.countries_of_specialization %>
-</p>
-
-<p>
-  <strong>Education:</strong>
-  <%= @scholar.education %>
-</p>
-
-<p>
-  <strong>Research interests:</strong>
-  <%= @scholar.research_interests %>
-</p>
-
-<p>
-  <strong>Teaching interests:</strong>
-  <%= @scholar.teaching_interests %>
-</p>
-
-<p>
-  <strong>Publications:</strong>
-  <%= @scholar.publications %>
-</p>
-
-<p>
-  <strong>Keywords:</strong>
-  <%= @scholar.keywords %>
-</p>
-
-<p>
-  <strong>Optional message:</strong>
-  <%= @scholar.optional_message %>
-</p>
-
-<p>
-  <strong>Submitter email:</strong>
-  <%= @scholar.submitter_email %>
-</p>
-
-<%= link_to 'Edit', edit_scholar_path(@scholar) %> |
-<%= link_to 'Back', scholars_path %>
+<div class="view-scholar">
+  <%= link_to 'Back', scholars_path, class: "btn" %>
+  <%= link_to 'Edit', edit_scholar_path(@scholar), class: "btn float-right" %>
+</div>
+<h2 class="scholar-name"><%= @scholar.first_name %> <%= @scholar.last_name %></h2>
+<%
+  # The following arraay contains, in the oder they will be displayed in the
+  # table below, the field names andfield values -- each [field name, field value]
+  # pair is contained within a 2-element array
+  field_names_values = [ ['Region of Study', @scholar.region_of_study],
+  ['Primary Country of Residence', @scholar.primary_country_of_residence],
+  ['Title', @scholar.title],
+  ['Affiliation', @scholar.affiliation],
+  ['Email', @scholar.email],
+  ['Mailing Address', @scholar.mailing_address],
+  ['Phone / Fax Number(s)', @scholar.phone_fax_numbers],
+  ['Website', @scholar.website],
+  ['Countries Of Specialization', @scholar.countries_of_specialization],
+  ['Education', @scholar.education],
+  ['Research Interests', @scholar.research_interests],
+  ['Teaching Interests', @scholar.teaching_interests],
+  ['Publications', @scholar.publications],
+  ['Keywords',  @scholar.keywords] ]
+%>
+<table class="table table-bordered">
+  <tbody>
+    <% field_names_values.each do |name, value| %>
+         <%= content_tag :tr do
+            content_tag(:td, name) +
+            content_tag(:td, simple_format(value))
+          end unless value.blank? %>
+    <% end %>
+</table>

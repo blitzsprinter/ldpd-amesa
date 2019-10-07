@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'pages/search'
   get 'pages/join'
   resources :scholars
+  get '/scholars/regions/:id', to: 'scholars#by_region_of_study', as: 'by_regions'
   root 'pages#home'
 end

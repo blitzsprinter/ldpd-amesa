@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<h1>Scholars</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Region of study</th>
+      <th>Primary country of residence</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% scholars.each do |scholar| %>
+      <tr>
+        <td><%= scholar.last_name %></td>
+        <td><%= scholar.first_name %></td>
+        <td><%= scholar.region_of_study %></td>
+        <td><%= scholar.primary_country_of_residence %></td>
+        <td class="view-scholar"><%= link_to 'View Scholar', scholar_path(scholar.id), class: 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

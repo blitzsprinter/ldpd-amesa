@@ -1,6 +1,13 @@
 class ScholarsController < ApplicationController
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
 
+  def by_region_of_study
+    sort_order = params[:sort] || :last_name
+    regions_of_study = ['Africa', 'Middle East', 'South Asia'].freeze
+    @scholars_in_region_of_study =
+      Scholar.where("region_of_study = '#{regions_of_study[params[:id].to_i - 1]}'").order(sort_order)
+  end
+
   # GET /scholars
   # GET /scholars.json
   def index

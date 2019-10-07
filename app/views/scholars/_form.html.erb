@@ -2,7 +2,6 @@
   <% if scholar.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(scholar.errors.count, "error") %> prohibited this scholar from being saved:</h2>
-
       <ul>
         <% scholar.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,97 +9,78 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :region_of_study %>
-    <%= form.text_field :region_of_study %>
+    <%= form.text_field :region_of_study, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :primary_country_of_residence %>
-    <%= form.text_field :primary_country_of_residence %>
+    <%= form.text_field :primary_country_of_residence, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :affiliation %>
-    <%= form.text_field :affiliation %>
+    <%= form.text_area :affiliation, class: "form-control", size: "60x12" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
     <%= form.text_field :email %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :mailing_address %>
-    <%= form.text_area :mailing_address %>
+    <%= form.text_area :mailing_addess, class: "form-control", size: "60x12" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :phone_fax_numbers %>
-    <%= form.text_area :phone_fax_numbers %>
+    <%= form.text_area :phone_fax_numbers, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :website %>
-    <%= form.text_field :website %>
+    <%= form.text_field :website, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :countries_of_specialization %>
-    <%= form.text_area :countries_of_specialization %>
+    <%= form.text_area :countries_of_specialization, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :education %>
-    <%= form.text_area :education %>
+    <%= form.text_area :education, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :research_interests %>
-    <%= form.text_area :research_interests %>
+    <%= form.text_area :research_interests, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :teaching_interests %>
-    <%= form.text_area :teaching_interests %>
+    <%= form.text_area :teaching_interests, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :publications %>
-    <%= form.text_area :publications %>
+    <%= form.text_area :publications, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :keywords %>
-    <%= form.text_field :keywords %>
+    <%= form.text_field :keywords, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :optional_message %>
-    <%= form.text_area :optional_message %>
+    <%= form.text_area :optional_message, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :submitter_email %>
-    <%= form.text_field :submitter_email %>
+    <%= form.text_field :submitter_email, class: "form-control" %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

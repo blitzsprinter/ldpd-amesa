@@ -1,0 +1,32 @@
+<div class="card sidebar-nav">
+  <ul class="nav flex-column">
+    <li class="nav-header">AMESA</li>
+    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/pages/about">About AMESA</a></li>
+    <li class="nav-item"><%= link_to 'Submit A New Entry', new_scholar_path,  class: "nav-link" %></li>
+    <li class="nav-header">View Scholars</li>
+    <li class="nav-item"><a class="nav-link" href="/scholars">All Regions</a></li>
+    <li class="nav-item"><%= link_to "Africa", by_regions_path(id: '1'), class: "nav-link" %></li>
+    <li class="nav-item"><%= link_to "Middle East", by_regions_path(id: '2'), class: "nav-link" %></li>
+    <li class="nav-item"><%= link_to "South Asia", by_regions_path(id: '3'), class: "nav-link" %></li>
+    <li class="nav-header">Admin</li>
+    <li class="nav-item"><a class="nav-link" href="">Login (TO-DO)</a></li>
+    <li class="nav-header">Language</li>
+    <li class="nav-item language-select">
+      <form id="eng_form" action="/scholars/index/middle_east" method="post">
+	<fieldset>
+	  <input type="hidden" name="site_language" value="eng" />
+	  <input type="submit" value="English" class="btn btn-sm active"/>
+	</fieldset>
+      </form>
+    </li>
+    <li class="nav-item language-select">
+      <form id="fra_form" action="/scholars/index/middle_east" method="post">
+	<fieldset>
+	  <input type="hidden" name="site_language" value="fra" />
+	  <input type="submit" value="Français (TO-DO)" class="btn btn-sm" disabled />
+	</fieldset>
+      </form>
+    </li>
+  </ul>
+</div>
