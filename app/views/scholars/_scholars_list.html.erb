@@ -15,8 +15,8 @@
       <tr>
         <td><%= scholar.last_name %></td>
         <td><%= scholar.first_name %></td>
-        <td><%= scholar.region_of_study %></td>
-        <td><%= scholar.primary_country_of_residence %></td>
+        <td><%= scholar.region.name_eng %></td>
+        <td><%= scholar.country.name_eng %></td>
         <td class="view-scholar"><%= link_to 'View Scholar', scholar_path(scholar.id), class: 'btn' %></td>
       </tr>
     <% end %>

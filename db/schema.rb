@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_194151) do
+ActiveRecord::Schema.define(version: 2019_10_08_195851) do
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name_eng"
+    t.string "name_fra"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name_eng"
+    t.string "name_fra"
+    t.string "url_formatted_name"
+  end
 
   create_table "scholars", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "region_of_study"
-    t.string "primary_country_of_residence"
+    t.integer "region_id"
+    t.integer "country_id"
     t.string "title"
     t.string "affiliation"
     t.string "email"
@@ -30,9 +41,15 @@ ActiveRecord::Schema.define(version: 2019_10_03_194151) do
     t.text "publications"
     t.string "keywords"
     t.text "optional_message"
+    t.text "warning"
     t.string "submitter_email"
+    t.boolean "approved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_scholars_on_country_id"
+    t.index ["first_name"], name: "index_scholars_on_first_name"
+    t.index ["last_name"], name: "index_scholars_on_last_name"
+    t.index ["region_id"], name: "index_scholars_on_region_id"
   end
 
 end
