@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<div class="view-region">
+  <%= link_to 'Back', regions_path, class: "btn" %>
+  <%= link_to 'Edit', edit_region_path(@region), class: "btn float-right" %>
+</div>
+<%
+  # The following arraay contains, in the oder they will be displayed in the
+  # table below, the field names andfield values -- each [field name, field value]
+  # pair is contained within a 2-element array
+  field_names_values = [ ['Region Code', @region.id],
+  ['Name (English)', @region.name_eng],
+  ['Name (French)', @region.name_fra],
+  ['URL Formatted Name', @region.url_formatted_name] ]
+%>
+<table class="table table-bordered">
+  <tbody>
+    <% field_names_values.each do |name, value| %>
+         <%= content_tag :tr do
+            content_tag(:td, name) +
+            content_tag(:td, value)
+          end %>
+    <% end %>
+</table>

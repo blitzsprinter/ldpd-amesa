@@ -10,6 +10,14 @@
     </div>
   <% end %>
   <div class="form-group">
+    <%= form.label 'Region of Interest' %>
+    <%= collection_select(:scholar, :region_id, Region.all, :id, :name_eng, prompt: true) %>
+  </div>
+  <div class="form-group">
+    <%= form.label 'Primary Country of Residence' %>
+    <%= collection_select(:scholar, :country_id, Country.all, :id, :name_eng, prompt: true) %>
+  </div>
+  <div class="form-group">
     <%= form.label :first_name %>
     <%= form.text_field :first_name, class: "form-control" %>
   </div>

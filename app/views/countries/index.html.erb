@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1>Countries</h1>
+<%= link_to 'New Country', new_country_path, class: 'btn' %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Country Code</th>
+      <th>Name (English)</th>
+      <th>Name (French)</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @countries.each do |country| %>
+      <tr>
+        <td><%= country.id %></td>
+        <td><%= country.name_eng %></td>
+        <td><%= country.name_fra %></td>
+        <td class="view-country">
+	  <%= link_to 'View Country', country_path(country.id), class: 'btn' %>
+	  <%= link_to 'Edit Country', edit_country_path(country.id), class: 'btn' %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

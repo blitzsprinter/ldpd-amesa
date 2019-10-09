@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<div class="view-country">
+  <%= link_to 'Back', countries_path, class: "btn" %>
+  <%= link_to 'Edit', edit_country_path(@country), class: "btn float-right" %>
+</div>
+<%
+  # The following arraay contains, in the oder they will be displayed in the
+  # table below, the field names andfield values -- each [field name, field value]
+  # pair is contained within a 2-element array
+  field_names_values = [ ['Country Code', @country.id],
+  ['Name (English)', @country.name_eng],
+  ['Name (French)', @country.name_fra] ]
+%>
+<table class="table table-bordered">
+  <tbody>
+    <% field_names_values.each do |name, value| %>
+         <%= content_tag :tr do
+            content_tag(:td, name) +
+            content_tag(:td, value)
+          end %>
+    <% end %>
+</table>
