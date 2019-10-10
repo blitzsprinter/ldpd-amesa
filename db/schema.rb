@@ -10,17 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_195851) do
+ActiveRecord::Schema.define(version: 2019_10_09_230827) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name_eng"
     t.string "name_fra"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "regions", force: :cascade do |t|
     t.string "name_eng"
     t.string "name_fra"
     t.string "url_formatted_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "scholar_edits", force: :cascade do |t|
+    t.integer "scholar_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "region_id"
+    t.integer "country_id"
+    t.string "title"
+    t.string "affiliation"
+    t.string "email"
+    t.text "mailing_address"
+    t.text "phone_fax_numbers"
+    t.string "website"
+    t.text "countries_of_specialization"
+    t.text "education"
+    t.text "research_interests"
+    t.text "teaching_interests"
+    t.text "publications"
+    t.string "keywords"
+    t.text "optional_message"
+    t.text "warning"
+    t.string "submitter_email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_scholar_edits_on_country_id"
+    t.index ["first_name"], name: "index_scholar_edits_on_first_name"
+    t.index ["last_name"], name: "index_scholar_edits_on_last_name"
+    t.index ["region_id"], name: "index_scholar_edits_on_region_id"
+    t.index ["scholar_id"], name: "index_scholar_edits_on_scholar_id"
   end
 
   create_table "scholars", force: :cascade do |t|

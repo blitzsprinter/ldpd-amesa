@@ -4,6 +4,8 @@ class CreateRegions < ActiveRecord::Migration[6.0]
       t.string :name_eng
       t.string :name_fra
       t.string :url_formatted_name
+
+      t.timestamps
     end
   end
 end

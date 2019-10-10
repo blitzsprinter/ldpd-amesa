@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :regions
   resources :countries
   resources :scholars
+  resources :scholar_edits
   get '/scholars/regions/:id', to: 'scholars#by_region_of_study', as: 'by_regions'
   root 'pages#home'
 end
