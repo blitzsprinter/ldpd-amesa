@@ -1,0 +1,30 @@
+#
+# SAML configuration for authentication via cul_omniauth.
+#
+
+cas: &CAS
+  host: cas.columbia.edu
+  login_url: /cas/login
+  logout_url: /cas/logout
+  service_validate_url: /cas/serviceValidate
+  disable_ssl_verification: true
+  provider: cas
+saml: &SAML
+  <<: *CAS
+  provider: saml
+  service_validate_url: /cas/samlValidate
+
+# fcd1, 10/10/19: ldpdd-key-resources uses this one line for development:
+# development: *SAML
+# fcd1, 10/10/19: AC uses the following for development:
+development:
+  provider: developer
+  fields:
+    - :uid
+  uid_field: :uid
+
+test: *SAML
+
+amesa_dev: *SAML
+amesa_test: *SAML
+amesa_prod: *SAML

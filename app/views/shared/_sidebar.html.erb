@@ -10,7 +10,14 @@
     <li class="nav-item"><%= link_to "Middle East", by_regions_path(id: '2'), class: "nav-link" %></li>
     <li class="nav-item"><%= link_to "South Asia", by_regions_path(id: '3'), class: "nav-link" %></li>
     <li class="nav-header">Admin</li>
-    <li class="nav-item"><a class="nav-link" href="">Login (TO-DO)</a></li>
+    <li class="nav-item">
+      <%= if current_user
+          link_to "Logout (#{current_user.uid})", destroy_user_session_path, class: "nav-link"
+	  else
+            link_to "Login (CAS)", new_user_session_path, class: "nav-link"
+	  end
+	  %>
+    </li>
     <li class="nav-item"><%= link_to "Manage Countries", countries_path, class: "nav-link" %></li>
     <li class="nav-item"><%= link_to "Manage Regions", regions_path, class: "nav-link" %></li>
     <li class="nav-header">Language</li>
