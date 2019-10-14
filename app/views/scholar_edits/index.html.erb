@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1>Pending Scholars Edits</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Region of study</th>
+      <th>Primary country of residence</th>
+      <th>Current Scholar Page</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scholar_edits.each do |scholar_edit| %>
+      <tr>
+        <td><%= scholar_edit.last_name %></td>
+        <td><%= scholar_edit.first_name %></td>
+        <td><%= scholar_edit.region.name_eng %></td>
+        <td><%= scholar_edit.country.name_eng %></td>
+        <td class="view-scholar"><%= link_to 'View Scholar', scholar_path(scholar_edit.scholar_id), class: 'btn' %></td>
+        <td class="view-scholar"><%= link_to 'Review', edit_scholar_edit_path(scholar_edit.id), class: 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

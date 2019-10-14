@@ -11,15 +11,19 @@
     <li class="nav-item"><%= link_to "South Asia", by_regions_path(id: '3'), class: "nav-link" %></li>
     <li class="nav-header">Admin</li>
     <li class="nav-item">
-      <%= if current_user
+      <%= if user_signed_in?
           link_to "Logout (#{current_user.uid})", destroy_user_session_path, class: "nav-link"
 	  else
             link_to "Login (CAS)", new_user_session_path, class: "nav-link"
 	  end
 	  %>
     </li>
-    <li class="nav-item"><%= link_to "Manage Countries", countries_path, class: "nav-link" %></li>
-    <li class="nav-item"><%= link_to "Manage Regions", regions_path, class: "nav-link" %></li>
+    <% if user_signed_in? %>
+      <li class="nav-item"><%= link_to "Pending Scholars", pending_scholars_path, class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "Pending Scholar Edits", scholar_edits_path, class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "Manage Countries", countries_path, class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "Manage Regions", regions_path, class: "nav-link" %></li>
+    <% end %>
     <li class="nav-header">Language</li>
     <li class="nav-item language-select">
       <form id="eng_form" action="/scholars/index/middle_east" method="post">

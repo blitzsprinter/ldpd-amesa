@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>Scholars</h1>
+<h1>Pending Scholars</h1>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -11,14 +11,14 @@
     </tr>
   </thead>
   <tbody>
-    <% scholars.each do |scholar| %>
+    <% @pending_scholars.each do |scholar| %>
       <tr>
         <td><%= scholar.last_name %></td>
         <td><%= scholar.first_name %></td>
         <td><%= scholar.region.name_eng %></td>
         <td><%= scholar.country.name_eng %></td>
         <td class="view-scholar">
-	  <%= link_to 'View Scholar', scholar_path(scholar.id), class: 'btn' %>
+	  <%= link_to 'Review', edit_pending_scholar_path(scholar.id), class: 'btn' %>
 	  <%= link_to 'Delete', scholar, method: :delete,
                                 data: { confirm: 'Are you sure?' },
                                 class: 'btn btn-danger' if user_signed_in? %>

@@ -1,17 +1,17 @@
-class ScholarsController < ApplicationController
+class PendingScholarsController < ApplicationController
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
 
   def by_region_of_study
     sort_order = params[:sort] || :last_name
     regions_of_study = ['Africa', 'Middle East', 'South Asia'].freeze
     @scholars_in_region_of_study =
-      Scholar.where("approved = ?", true).where("region_id = '#{params[:id]}'").order(sort_order)
+      Scholar.where("region_id = '#{params[:id]}'").order(sort_order)
   end
 
   # GET /scholars
   # GET /scholars.json
   def index
-    @scholars = Scholar.all.where("approved = ?", true)
+    @pending_scholars = Scholar.all.where("approved = ?", false)
   end
 
   # GET /scholars/1
@@ -71,11 +71,11 @@ class ScholarsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_scholar
-      @scholar = Scholar.find(params[:id])
+      @pending_scholar = Scholar.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scholar_params
-      params.require(:scholar).permit(:first_name, :last_name, :region_id, :country_id, :title, :affiliation, :email, :mailing_address, :phone_fax_numbers, :website, :countries_of_specialization, :education, :research_interests, :teaching_interests, :publications, :keywords, :optional_message, :submitter_email, :approved)
+      params.require(:scholar).permit(:first_name, :last_name, :region_id, :country_id, :title, :affiliation, :email, :mailing_address, :phone_fax_numbers, :website, :countries_of_specialization, :education, :research_interests, :teaching_interests, :publications, :keywords, :optional_message, :submitter_email)
     end
 end
