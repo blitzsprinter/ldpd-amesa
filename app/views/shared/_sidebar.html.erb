@@ -18,7 +18,7 @@
 	  end
 	  %>
     </li>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && ADMINS.include?(current_user.uid) %>
       <li class="nav-item"><%= link_to "Pending Scholars", pending_scholars_path, class: "nav-link" %></li>
       <li class="nav-item"><%= link_to "Pending Scholar Edits", scholar_edits_path, class: "nav-link" %></li>
       <li class="nav-item"><%= link_to "Manage Countries", countries_path, class: "nav-link" %></li>
