@@ -1,1 +1,14 @@
-<%= render partial: 'scholars_list', locals: { scholars: @scholars_in_region_of_study } %>
+<%= render partial: 'scholars_list', locals: {
+    scholars: @scholars_in_region_of_study,
+    header_url_path_helper: :by_regions_path,
+    sort_column: @sort_column,
+    sort_direction: @sort_direction,
+    last_name_sort_ascend: @last_name_sort_ascend,
+    last_name_header_class: @last_name_header_class,
+    first_name_sort_ascend: @first_name_sort_ascend,
+    first_name_header_class: @first_name_header_class,
+    region_of_study_sort_ascend: @region_of_study_sort_ascend,
+    region_of_study_header_class: @region_of_study_header_class,
+    primary_country_of_residence_sort_ascend: @primary_country_of_residence_sort_ascend,
+    primary_country_of_residence_header_class: @primary_country_of_residence_header_class } %>
+<%= paginate @scholars_in_region_of_study %>

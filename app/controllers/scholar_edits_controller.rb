@@ -4,7 +4,7 @@ class ScholarEditsController < ApplicationController
   # GET /scholar_edits
   # GET /scholar_edits.json
   def index
-    @scholar_edits = ScholarEdit.all
+    @scholar_edits = ScholarEdit.all.page params[:page]
   end
 
   # GET /scholar_edits/1

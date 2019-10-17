@@ -35,6 +35,9 @@ gem 'devise'
 # Columbia CAS
 gem 'cul_omniauth', git: 'https://github.com/cul/cul_omniauth', branch: 'rails-6'
 
+# pagination
+gem 'kaminari'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -20,6 +20,46 @@
     }
 }
 
+// fcd1, 10/17/19: based on example in stackoverflow post
+.pagination a, .pagination span.current, .pagination span.gap {
+    float: left;
+    padding: 0 14px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+}
+
+.pagination {
+    border-left: 1px solid #ddd;
+    .first{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .prev {
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .page{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .next{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .last{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+}
+
 .sidebar {
     padding-right: 0px;
 }
@@ -37,6 +77,22 @@
     }
     .nav-link {
 	padding: 3px 15px;
+    }
+}
+
+table.scholars-list {
+    tr {
+	th {
+	    a, a:visited, a:hover, a:active {
+		color: #0088cc;
+	    }
+	    a.desc::after {
+		content: "⇡";
+	    }
+	    a.asc::after {
+		content: "⇣";
+	    }
+	}
     }
 }
 
