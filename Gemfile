@@ -38,6 +38,9 @@ gem 'cul_omniauth', git: 'https://github.com/cul/cul_omniauth', branch: 'rails-6
 # pagination
 gem 'kaminari'
 
+# search via Solr
+gem 'sunspot_rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -56,6 +59,8 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
   gem 'capistrano-passenger', require: false
+  # optional pre-packaged Solr distribution for use in development. Not for use in production.
+  gem 'sunspot_solr'
 end
 
 group :test do
