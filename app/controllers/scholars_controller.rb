@@ -5,7 +5,7 @@ class ScholarsController < ApplicationController
   def by_region_of_study
     sort_order = params[:sort] || 'last_name ASC'
     # Note: all bools indicating whether sort order is ascending or not are
-    # always reset to true before calling the index action
+    # always reset to true before calling the by_region_of_study action
     case sort_order
     when 'last_name ASC'
       @last_name_sort_ascend = false

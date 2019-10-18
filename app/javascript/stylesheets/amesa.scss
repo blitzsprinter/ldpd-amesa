@@ -1,9 +1,24 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
+// use to overide max-width set by _grid.scss. May need to revisit this
+// for responsiveness
+#amesa-container {
+    max-width: 1198px;
+}
+
 .banner {
     .amesa-overlay-text {
 	padding: 1em;
 	background-color: rgba(245, 245, 245, .5)
+    }
+}
+
+.country-actions, .region-actions, .scholar-actions {
+    text-align: center;
+    .btn-sm {
+	border: 1px solid;
+	text-align: center;
+	font-size: inherit;
     }
 }
 
@@ -20,7 +35,7 @@
     }
 }
 
-// fcd1, 10/17/19: based on example in stackoverflow post
+// fcd1, 10/17/19: pagination scss based on example in stackoverflow post
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
     padding: 0 14px;
@@ -93,11 +108,5 @@ table.scholars-list {
 		content: "⇣";
 	    }
 	}
-    }
-}
-
-.view-scholar {
-    .btn {
-	border: 1px solid;
     }
 }

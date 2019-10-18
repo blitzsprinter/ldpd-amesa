@@ -18,6 +18,10 @@
 	</div>
 	<div class="col-10">
 	  <%= render partial: 'shared/search' %>
+          <p id="notice"><%= notice %></p>
+          <% if user_signed_in? && ADMINS.include?(current_user.uid) %>
+            <p id="notice">Your are currently logged in as an adminstrator.</p>
+          <% end %>
 	  <%= render partial: 'banner' %>
 	  <%= yield %>
 	</div>

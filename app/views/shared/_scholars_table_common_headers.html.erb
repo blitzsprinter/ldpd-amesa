@@ -1,0 +1,24 @@
+<th>
+  <%= link_to 'Last&nbsp;name'.html_safe,
+              send(header_url_path_helper, sort: last_name_sort_ascend ? 'last_name ASC' : 'last_name DESC'),
+              class: last_name_header_class
+  %>
+</th>
+<th>
+  <%= link_to 'First&nbsp;name'.html_safe,
+              send(header_url_path_helper, sort: first_name_sort_ascend ? 'first_name ASC' : 'first_name DESC'),
+              class: first_name_header_class
+  %>
+</th>
+<th>
+  <%= link_to 'Region&nbsp;of&nbsp;study'.html_safe,
+              send(header_url_path_helper, sort: region_of_study_sort_ascend ? 'region_id ASC' : 'region_id DESC'),
+              class: region_of_study_header_class
+  %>
+</th>
+<th>
+  <%= link_to 'Primary&nbsp;country&nbsp;of&nbsp;residence'.html_safe,
+              send(header_url_path_helper, sort: primary_country_of_residence_sort_ascend ? 'country_id ASC' : 'country_id DESC'),
+              class: primary_country_of_residence_header_class
+  %>
+</th>

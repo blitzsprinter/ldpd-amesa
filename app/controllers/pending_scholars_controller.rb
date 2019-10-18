@@ -1,17 +1,36 @@
 class PendingScholarsController < ApplicationController
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
-
-  def by_region_of_study
-    sort_order = params[:sort] || :last_name
-    regions_of_study = ['Africa', 'Middle East', 'South Asia'].freeze
-    @scholars_in_region_of_study =
-      Scholar.where("region_id = '#{params[:id]}'").order(sort_order)
-  end
+  before_action :set_sort_direction, only: [:index]
 
   # GET /scholars
   # GET /scholars.json
   def index
-    @pending_scholars = Scholar.all.where("approved = ?", false)
+    sort_order = params[:sort] || 'last_name ASC'
+    # Note: all bools indicating whether sort order is ascending or not are
+    # always reset to true before calling the index action
+    case sort_order
+    when 'last_name ASC'
+      @last_name_sort_ascend = false
+      @last_name_header_class = 'asc'
+    when 'last_name DESC'
+      @last_name_header_class = 'desc'
+    when 'first_name ASC'
+      @first_name_sort_ascend = false
+      @first_name_header_class = 'asc'
+    when 'first_name DESC'
+      @first_name_header_class = 'desc'
+    when 'region_id ASC'
+      @region_of_study_sort_ascend = false
+      @region_of_study_header_class = 'asc'
+    when 'region_id DESC'
+      @region_of_study_header_class = 'desc'
+    when 'country_id ASC'
+      @primary_country_of_residence_sort_ascend = false
+      @primary_country_of_residence_header_class = 'asc'
+    when 'country_id DESC'
+      @primary_country_of_residence_header_class = 'desc'
+    end
+    @pending_scholars = Scholar.all.where("approved = ?", false).order(sort_order).page params[:page]
   end
 
   # GET /scholars/1
@@ -72,6 +91,17 @@ class PendingScholarsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_scholar
       @pending_scholar = Scholar.find(params[:id])
+    end
+
+    def set_sort_direction
+      @last_name_sort_ascend =
+        @first_name_sort_ascend =
+        @region_of_study_sort_ascend =
+        @primary_country_of_residence_sort_ascend = true
+      @last_name_header_class =
+        @first_name_header_class =
+        @region_of_study_header_class =
+        @primary_country_of_residewnce_header_class = nil
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

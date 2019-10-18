@@ -1,14 +1,37 @@
-<%= render partial: 'scholars_list', locals: {
-    scholars: @scholars,
-    header_url_path_helper: :scholars_path,
-    sort_column: @sort_column,
-    sort_direction: @sort_direction,
-    last_name_sort_ascend: @last_name_sort_ascend,
-    last_name_header_class: @last_name_header_class,
-    first_name_sort_ascend: @first_name_sort_ascend,
-    first_name_header_class: @first_name_header_class,
-    region_of_study_sort_ascend: @region_of_study_sort_ascend,
-    region_of_study_header_class: @region_of_study_header_class,
-    primary_country_of_residence_sort_ascend: @primary_country_of_residence_sort_ascend,
-    primary_country_of_residence_header_class: @primary_country_of_residence_header_class } %>
+<h1>Scholars</h1>
+<table class="table table-bordered scholars-list">
+  <thead>
+    <tr>
+      <%= render partial: 'shared/scholars_table_common_headers',
+                 locals: { header_url_path_helper: :scholars_path,
+                           sort_column: @sort_column,
+                           sort_direction: @sort_direction,
+                           last_name_sort_ascend: @last_name_sort_ascend,
+                           last_name_header_class: @last_name_header_class,
+                           first_name_sort_ascend: @first_name_sort_ascend,
+                           first_name_header_class: @first_name_header_class,
+                           region_of_study_sort_ascend: @region_of_study_sort_ascend,
+                           region_of_study_header_class: @region_of_study_header_class,
+                           primary_country_of_residence_sort_ascend: @primary_country_of_residence_sort_ascend,
+                           primary_country_of_residence_header_class: @primary_country_of_residence_header_class }
+      %>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scholars.each do |scholar| %>
+      <tr>
+        <%= render partial: 'shared/scholars_table_common_data_cells',
+                   locals: { scholar: scholar }
+        %>
+        <td class="scholar-actions">
+          <%= link_to 'View Scholar', scholar_path(scholar.id), class: 'btn-sm' %>
+          <%= link_to 'Delete', scholar, method: :delete,
+                                data: { confirm: 'Are you sure?' },
+                                class: 'btn-sm btn-danger' if user_signed_in? %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= paginate @scholars %>

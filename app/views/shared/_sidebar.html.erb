@@ -10,19 +10,17 @@
     <li class="nav-item"><%= link_to "Middle East", by_regions_path(id: '2') %></li>
     <li class="nav-item"><%= link_to "South Asia", by_regions_path(id: '3') %></li>
     <li class="nav-header">Admin</li>
-    <li class="nav-item">
-      <%= if user_signed_in?
-          link_to "Logout (#{current_user.uid})", destroy_user_session_path
-	  else
-            link_to "Login (CAS)", new_user_session_path
-	  end
-	  %>
-    </li>
+    <%= unless user_signed_in?
+      content_tag(:li,
+                  link_to("Login (CAS)", new_user_session_path),
+                  class: "nav-item")
+    end %>
     <% if user_signed_in? && ADMINS.include?(current_user.uid) %>
-      <li class="nav-item"><%= link_to "Pending Scholar Edits", scholar_edits_path %></li>
       <li class="nav-item"><%= link_to "Pending Scholars", pending_scholars_path %></li>
+      <li class="nav-item"><%= link_to "Pending Scholar Edits", scholar_edits_path %></li>
       <li class="nav-item"><%= link_to "Manage Countries", countries_path %></li>
       <li class="nav-item"><%= link_to "Manage Regions", regions_path %></li>
+      <li class="nav-item"><%= link_to "Logout (#{current_user.uid})", destroy_user_session_path %></li>
     <% end %>
     <li class="nav-header">Language</li>
     <li class="nav-item language-select">

@@ -1,12 +1,20 @@
-<p id="notice"><%= notice %></p>
 <h1>Pending Scholars Edits</h1>
-<table class="table table-bordered">
+<table class="table table-bordered scholars-list">
   <thead>
     <tr>
-      <th>Last name</th>
-      <th>First name</th>
-      <th>Region of study</th>
-      <th>Primary country of residence</th>
+      <%= render partial: 'shared/scholars_table_common_headers',
+                 locals: { header_url_path_helper: :scholar_edits_path,
+                           sort_column: @sort_column,
+                           sort_direction: @sort_direction,
+                           last_name_sort_ascend: @last_name_sort_ascend,
+                           last_name_header_class: @last_name_header_class,
+                           first_name_sort_ascend: @first_name_sort_ascend,
+                           first_name_header_class: @first_name_header_class,
+                           region_of_study_sort_ascend: @region_of_study_sort_ascend,
+                           region_of_study_header_class: @region_of_study_header_class,
+                           primary_country_of_residence_sort_ascend: @primary_country_of_residence_sort_ascend,
+                           primary_country_of_residence_header_class: @primary_country_of_residence_header_class }
+      %>
       <th>Current Scholar Page</th>
       <th>Action</th>
     </tr>
@@ -14,12 +22,11 @@
   <tbody>
     <% @scholar_edits.each do |scholar_edit| %>
       <tr>
-        <td><%= scholar_edit.last_name %></td>
-        <td><%= scholar_edit.first_name %></td>
-        <td><%= scholar_edit.region.name_eng %></td>
-        <td><%= scholar_edit.country.name_eng %></td>
-        <td class="view-scholar"><%= link_to 'View Scholar', scholar_path(scholar_edit.scholar_id), class: 'btn' %></td>
-        <td class="view-scholar"><%= link_to 'Review', edit_scholar_edit_path(scholar_edit.id), class: 'btn' %></td>
+        <%= render partial: 'shared/scholars_table_common_data_cells',
+                   locals: { scholar: scholar_edit }
+        %>
+        <td class="scholar-actions"><%= link_to 'View Page', scholar_path(scholar_edit.scholar_id), class: 'btn-sm' %></td>
+        <td class="scholar-actions"><%= link_to 'Review', edit_scholar_edit_path(scholar_edit.id), class: 'btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>

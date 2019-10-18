@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
 <h1>Regions</h1>
-<%= link_to 'New Region', new_region_path, class: 'btn' %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -16,9 +14,8 @@
         <td><%= region.name_eng %></td>
         <td><%= region.name_fra %></td>
         <td><%= region.url_formatted_name %></td>
-        <td class="view-region">
-	  <%= link_to 'View Region', region_path(region.id), class: 'btn' %>
-	  <%= link_to 'Edit Region', edit_region_path(region.id), class: 'btn' %>
+        <td class="region-actions">
+	  <%= link_to 'Edit', edit_region_path(region.id), class: 'btn-sm' %>
 	</td>
       </tr>
     <% end %>

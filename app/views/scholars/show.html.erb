@@ -1,6 +1,9 @@
-<p id="notice"><%= notice %></p>
-<div class="view-scholar">
-  <%= link_to 'Edit', new_scholar_edit_path(scholar_id: @scholar.id), class: "btn float-right" %>
+<div class="scholar-actions">
+  <%= link_to 'Delete', @scholar, method: :delete,
+                                 data: { confirm: 'Are you sure?' },
+                                 class: 'btn-sm btn-danger float-right' if user_signed_in?
+  %>
+  <%= link_to 'Submit an Edit', new_scholar_edit_path(scholar_id: @scholar.id), class: "btn-sm float-right" %>
 </div>
 <h2 class="scholar-name"><%= @scholar.first_name %> <%= @scholar.last_name %></h2>
 <%

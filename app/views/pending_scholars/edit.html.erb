@@ -1,9 +1,6 @@
-<h1>Editing Scholar</h1>
-
-<%= render 'shared/scholar_form', scholar: @pending_scholar,
-                                  submit_text: 'Approve Pending Scholar',
-                                  approved_default_value: true %>
-
-<%= link_to 'Reject Pending Scholar', @pending_scholar, method: :delete,
-                                                        data: { confirm: 'Are you sure?' },
-                                                        class: 'btn btn-danger' %>
+<h1>Review Pending Scholar</h1>
+<%= render 'form', scholar: @pending_scholar %>
+<%= link_to 'Reject', @pending_scholar, method: :delete,
+                                        data: { confirm: 'Are you sure?' },
+                                        class: 'btn btn-danger'
+%>
