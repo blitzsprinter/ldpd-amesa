@@ -29,6 +29,7 @@
 
 # Ignore following config files
 config/admins.yml
+config/emails.yml
 
 /public/packs
 /public/packs-test
