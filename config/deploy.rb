@@ -40,6 +40,7 @@ set :passenger_restart_with_touch, true
 set :linked_files, fetch(:linked_files, []).push(
   'config/admins.yml',
   'config/database.yml',
+  'config/emails.yml',
   'config/master.key',
   'config/secrets.yml'
 )
