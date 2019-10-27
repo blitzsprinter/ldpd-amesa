@@ -1,4 +1,5 @@
 class ScholarEditsController < ApplicationController
+  before_action	:verify_logged_in_with_admin_privs, except: [:new, :create]
   before_action :set_scholar_edit, only: [:show, :edit, :update, :destroy]
   before_action :set_sort_direction, only: [:index]
 
@@ -57,7 +58,8 @@ class ScholarEditsController < ApplicationController
 
     respond_to do |format|
       if @scholar_edit.save
-        format.html { redirect_to scholars_path, notice: 'Your edit has been submitted.' }
+        format.html { redirect_to scholars_path,
+                                  notice: 'Your scholar edit has been submitted successfully and is awaiting approval by an administrator.' }
         # format.html { redirect_to @scholar_edit, notice: 'ScholarEdit was successfully created.' }
         format.json { render :show, status: :created, location: @scholar_edit }
       else
@@ -76,7 +78,8 @@ class ScholarEditsController < ApplicationController
         reject_attributes = ['id', 'scholar_id','created_at', 'updated_at']
         scholar.update(@scholar_edit.attributes.slice(*(ScholarEdit.attribute_names - reject_attributes)))
         @scholar_edit.destroy
-        format.html { redirect_to scholar, notice: 'The Scholar entry was successfully updated.' }
+        format.html { redirect_to scholar_edits_url,
+                                  notice: "The scholar edit has been approved. The associated scholar's public-facing information has been updated." }
         format.json { render :show, status: :ok, location: @scholar_edit }
       else
         format.html { render :edit }
@@ -90,7 +93,7 @@ class ScholarEditsController < ApplicationController
   def destroy
     @scholar_edit.destroy
     respond_to do |format|
-      format.html { redirect_to scholar_edits_url, notice: 'The pending scholar edit was successfullyt rejected.' }
+      format.html { redirect_to scholar_edits_url, notice: 'Scholar edit rejected.' }
       format.json { head :no_content }
     end
   end

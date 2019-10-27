@@ -27,8 +27,8 @@
         <td class="scholar-actions">
           <%= link_to 'View Scholar', scholar_path(scholar.id), class: 'btn-sm' %>
           <%= link_to 'Delete', scholar, method: :delete,
-                                data: { confirm: 'Are you sure?' },
-                                class: 'btn-sm btn-danger' if user_signed_in? %>
+                                data: { confirm: "Are you sure you want to delete '#{scholar.last_name}, #{scholar.first_name}'?" },
+                                class: 'btn-sm btn-danger' if (user_signed_in? && ADMINS.include?(current_user.uid)) %>
 	</td>
       </tr>
     <% end %>

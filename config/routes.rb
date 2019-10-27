@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :regions
   resources :countries
   resources :scholars
-  resources :pending_scholars, only: [:index, :show, :edit]
-  resources :scholar_edits
+  resources :pending_scholars, only: [:index, :edit]
+  resources :scholar_edits, except: [:show]
   get '/scholars/regions/:id', to: 'scholars#by_region_of_study', as: 'by_regions'
   root 'pages#home'
 end

@@ -15,10 +15,18 @@
 
 .country-actions, .region-actions, .scholar-actions {
     text-align: center;
+    a, a:visited, a:hover, a:active {
+	color: #0088cc;
+    }
     .btn-sm {
 	border: 1px solid;
 	text-align: center;
 	font-size: inherit;
+    }
+    a, a:visited, a:hover, a:active {
+	&.btn-danger {
+	    color: #fff;
+	}
     }
 }
 

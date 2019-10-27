@@ -1,4 +1,5 @@
 class PendingScholarsController < ApplicationController
+  before_action :verify_logged_in_with_admin_privs
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
   before_action :set_sort_direction, only: [:index]
 
@@ -40,7 +41,6 @@ class PendingScholarsController < ApplicationController
 
   # GET /scholars/new
   def new
-    @scholar = Scholar.new
   end
 
   # GET /scholars/1/edit
@@ -50,41 +50,16 @@ class PendingScholarsController < ApplicationController
   # POST /scholars
   # POST /scholars.json
   def create
-    @scholar = Scholar.new(scholar_params)
-
-    respond_to do |format|
-      if @scholar.save
-        format.html { redirect_to @scholar, notice: 'Scholar was successfully created.' }
-        format.json { render :show, status: :created, location: @scholar }
-      else
-        format.html { render :new }
-        format.json { render json: @scholar.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /scholars/1
   # PATCH/PUT /scholars/1.json
   def update
-    respond_to do |format|
-      if @scholar.update(scholar_params)
-        format.html { redirect_to @scholar, notice: 'Scholar was successfully updated.' }
-        format.json { render :show, status: :ok, location: @scholar }
-      else
-        format.html { render :edit }
-        format.json { render json: @scholar.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /scholars/1
   # DELETE /scholars/1.json
   def destroy
-    @scholar.destroy
-    respond_to do |format|
-      format.html { redirect_to scholars_url, notice: 'Scholar was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

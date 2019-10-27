@@ -1,6 +1,6 @@
 <h1>Review Pending Scholar Edit</h1>
 <%= render 'form', scholar: @scholar_edit, submit_text: 'Approve Edit' %>
 <%= link_to 'Reject Edit', @scholar_edit, method: :delete,
-                                                     data: { confirm: 'Are you sure?' },
-                                                     class: 'btn btn-danger'
+             data: { confirm: "Are you sure you want to reject this submitted edit for '#{@scholar_edit.last_name}, #{@scholar_edit.first_name}'?" },
+                           class: 'btn btn-danger'
 %>

@@ -1,4 +1,5 @@
 class ScholarsController < ApplicationController
+  before_action :verify_logged_in_with_admin_privs, only: [:update, :destroy]
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
   before_action :set_sort_direction, only: [:index, :by_region_of_study]
 
@@ -86,7 +87,8 @@ class ScholarsController < ApplicationController
 
     respond_to do |format|
       if @scholar.save
-        format.html { redirect_to @scholar, notice: 'Scholar was successfully created.' }
+        format.html { redirect_to scholars_url,
+                                  notice: 'Thank you for submitting a new scholar entry. Your entry is awaiting approval by an administrator.' }
         format.json { render :show, status: :created, location: @scholar }
       else
         format.html { render :new }
@@ -100,7 +102,7 @@ class ScholarsController < ApplicationController
   def update
     respond_to do |format|
       if @scholar.update(scholar_params)
-        format.html { redirect_to @scholar, notice: 'Scholar was successfully updated.' }
+        format.html { redirect_to pending_scholars_url, notice: 'The scholar has been approved.' }
         format.json { render :show, status: :ok, location: @scholar }
       else
         format.html { render :edit }
@@ -114,7 +116,7 @@ class ScholarsController < ApplicationController
   def destroy
     @scholar.destroy
     respond_to do |format|
-      format.html { redirect_to scholars_url, notice: 'Scholar was successfully destroyed.' }
+      format.html { redirect_to scholars_url, notice: 'Scholar deleted.' }
       format.json { head :no_content }
     end
   end
