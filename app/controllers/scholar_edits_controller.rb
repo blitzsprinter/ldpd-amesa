@@ -57,6 +57,7 @@ class ScholarEditsController < ApplicationController
 
     respond_to do |format|
       if @scholar_edit.save
+        NotificationMailer.pending_scholar_edit.deliver_now
         format.html { redirect_to scholars_path, notice: 'Your edit has been submitted.' }
         # format.html { redirect_to @scholar_edit, notice: 'ScholarEdit was successfully created.' }
         format.json { render :show, status: :created, location: @scholar_edit }

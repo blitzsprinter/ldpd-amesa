@@ -54,6 +54,7 @@ class PendingScholarsController < ApplicationController
 
     respond_to do |format|
       if @scholar.save
+        NoticationMail.pending_new_scholar.deliver_now
         format.html { redirect_to @scholar, notice: 'Scholar was successfully created.' }
         format.json { render :show, status: :created, location: @scholar }
       else
