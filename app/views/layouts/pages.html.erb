@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LdpdAmesa</title>
+    <title>AMESA</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +11,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div style="text-align:center;">
+      <a href="https://library.columbia.edu">
+        <%= image_tag "legacy_branding.png", height: "50" %>
+      </a>
+    </div>
     <div class="main-container container">
+      <hr>
       <div class="row">
 	<div class="col-2 sidebar">
 	  <%= render partial: 'shared/sidebar' %>
