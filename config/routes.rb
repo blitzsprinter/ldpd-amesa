@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :pending_scholars, only: [:index, :edit]
   resources :scholar_edits, except: [:show]
   get '/scholars/regions/:id', to: 'scholars#by_region_of_study', as: 'by_regions'
+  get 'search', to: 'scholars#search', as: 'search'
   root 'pages#home'
 end

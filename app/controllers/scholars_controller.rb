@@ -3,6 +3,11 @@ class ScholarsController < ApplicationController
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
   before_action :set_sort_direction, only: [:index, :by_region_of_study]
 
+  def search
+    @search_term = params[:search_term]
+    @scholars = Scholar.search(@search_term)
+  end
+
   def by_region_of_study
     sort_order = params[:sort] || 'last_name ASC'
     # Note: all bools indicating whether sort order is ascending or not are
@@ -139,6 +144,6 @@ class ScholarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scholar_params
-      params.require(:scholar).permit(:first_name, :last_name, :region_id, :country_id, :title, :affiliation, :email, :mailing_address, :phone_fax_numbers, :website, :countries_of_specialization, :education, :research_interests, :teaching_interests, :publications, :keywords, :optional_message, :submitter_email, :approved)
+      params.require(:scholar).permit(:first_name, :last_name, :region_id, :country_id, :title, :affiliation, :email, :mailing_address, :phone_fax_numbers, :website, :countries_of_specialization, :education, :research_interests, :teaching_interests, :publications, :keywords, :optional_message, :submitter_email, :approved, :search_term)
     end
 end

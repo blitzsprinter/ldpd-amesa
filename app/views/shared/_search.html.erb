@@ -1,10 +1,6 @@
 <div class="card card-small">
-  <form id="main_search_form" class="form-search pull-right" action="/search" method="get">
-    <input type="text"
-           id="q" name="q" class="input-large"
-           placeholder="Search for scholars..."
-           value=""
-           />
-    <input type="submit" class="btn btn-small" value="Search" disabled />
-  </form>
+  <%= form_with url: search_path, method: :get, local: true do |form| %>
+    <%= form.text_field :search_term, placeholder: "Search for scholars..." %>
+    <%= form.submit 'Search' %>
+  <% end %>
 </div>
