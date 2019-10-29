@@ -6,4 +6,8 @@ class Scholar < ApplicationRecord
   validates :first_name, :last_name, :email, :publications, presence: true
 
   paginates_per 10
+
+  def self.search(search_term)
+    Scholar.where("LOWER(first_name) = :search_term or LOWER(last_name) = :search_term", search_term: search_term.downcase)
+  end
 end
