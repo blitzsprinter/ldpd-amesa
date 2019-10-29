@@ -1,4 +1,5 @@
 class CountriesController < ApplicationController
+  before_action :verify_logged_in_with_admin_privs
   before_action :set_country, only: [:show, :edit, :update, :destroy]
 
   # GET /countries
