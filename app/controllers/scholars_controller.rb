@@ -8,6 +8,9 @@ class ScholarsController < ApplicationController
     @scholars = Scholar.search(@search_term)
   end
 
+  def gcssearch
+  end
+
   def by_region_of_study
     sort_order = params[:sort] || 'last_name ASC'
     # Note: all bools indicating whether sort order is ascending or not are

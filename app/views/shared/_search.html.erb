@@ -4,3 +4,9 @@
     <%= form.submit 'Search' %>
   <% end %>
 </div>
+<div class="card card-small">
+  <%= form_with url: gcssearch_path, method: :get, local: true do |form| %>
+    <%= form.text_field :q, placeholder: "Search for scholars..." %>
+    <%= form.submit 'Search' %>
+  <% end %>
+</div>

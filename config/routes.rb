@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resources :scholar_edits, except: [:show]
   get '/scholars/regions/:id', to: 'scholars#by_region_of_study', as: 'by_regions'
   get 'search', to: 'scholars#search', as: 'search'
+  get 'gcssearch', to: 'scholars#gcssearch', as: 'gcssearch'
   root 'pages#home'
 end
