@@ -36,7 +36,7 @@
 	  <%= link_to 'View Scholar', scholar_path(scholar.id), class: 'btn-sm' %>
 	  <%= link_to 'Delete', scholar, method: :delete,
                                 data: { confirm: 'Are you sure?' },
-                                class: 'btn-sm btn-danger' if user_signed_in? %>
+                                class: 'btn-sm btn-danger' if amesa_admin_privs? %>
 	</td>
       </tr>
     <% end %>

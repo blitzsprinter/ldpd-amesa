@@ -23,7 +23,7 @@
                       link_to("Logout (#{current_user.uid})", destroy_user_session_path),
                       class: "nav-item")
     end %>
-    <% if user_signed_in? && ADMINS.include?(current_user.uid) %>
+    <% if amesa_admin_privs? %>
       <li class="nav-item"><%= link_to "Pending Scholars", pending_scholars_path %></li>
       <li class="nav-item"><%= link_to "Pending Scholar Edits", scholar_edits_path %></li>
       <li class="nav-item"><%= link_to "Manage Countries", countries_path %></li>

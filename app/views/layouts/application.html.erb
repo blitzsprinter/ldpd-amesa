@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AMESA</title>
+    <% title_scholar = @scholar ? "#{@scholar.first_name} #{@scholar.last_name} - " : '' %>
+    <title><%= title_scholar %>AMESA</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- Not sure I need the following stylesheet_pack_tag, one video tutorial said was needed for production-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -25,7 +25,7 @@
 	<div class="col-10">
 	  <%= render partial: 'shared/search' %>
 	  <p id="notice"><%= notice %></p>
-	  <% if user_signed_in? && ADMINS.include?(current_user.uid) %>
+	  <% if amesa_admin_privs? %>
             <p id="notice">Your are currently logged in as an adminstrator.</p>
 	  <% end %>
 	  <%= yield %>

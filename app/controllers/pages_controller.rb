@@ -7,7 +7,4 @@ class PagesController < ApplicationController
 
   def search
   end
-
-  def join
-  end
 end
