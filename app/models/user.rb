@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Cul::Omniauth::Users
 
   before_validation(:default_email, on: :create)
+  after_create :login_log_msg
 
   # Password methods required by Devise.
   def password
@@ -17,5 +18,9 @@ class User < ApplicationRecord
   def default_email
     mail = "#{self.uid}@columbia.edu"
     self.email = mail
+  end
+
+  def login_log_msg
+    Rails.logger.warn("User LOGIN, uid: #{self.uid}")
   end
 end

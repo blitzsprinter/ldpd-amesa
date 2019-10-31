@@ -1,4 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
+  before_action :logout_log_msg, only: [:destroy]
+
   def new_session_path(scope)
     new_user_session_path # this accomodates Users namespace of the controller
   end
@@ -17,5 +19,10 @@ class Users::SessionsController < Devise::SessionsController
     else
       redirect_to user_saml_omniauth_authorize_path
     end
+  end
+
+  private
+  def logout_log_msg
+    Rails.logger.warn("User LOGOUT, uid: #{current_user.uid}")
   end
 end

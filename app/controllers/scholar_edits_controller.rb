@@ -45,19 +45,33 @@ class ScholarEditsController < ApplicationController
     reject_attributes = ['id', 'created_at', 'updated_at']
     @scholar_edit = ScholarEdit.new(scholar.attributes.slice(*(ScholarEdit.attribute_names - reject_attributes)))
     @scholar_edit.scholar_id = scholar.id
+    Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                      "Scholar Edit in process (ScholarEditsController#new): " +
+                      "id: #{@scholar_edit.id}; scholar_id: #{@scholar_edit.scholar_id}; " +
+                      "Original name: #{@scholar_edit.scholar.last_name}, #{@scholar_edit.scholar.first_name}; " +
+                      "Scholar Edit name: #{@scholar_edit.last_name}, #{@scholar_edit.first_name}")
   end
 
   # GET /scholar_edits/1/edit
   def edit
+    Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                      "Reviewing Scholar Edit (ScholarEditsController#edit): " +
+                      "id: #{@scholar_edit.id}; scholar_id: #{@scholar_edit.scholar_id}; " +
+                      "Original name: #{@scholar_edit.scholar.last_name}, #{@scholar_edit.scholar.first_name}; " +
+                      "Scholar Edit name: #{@scholar_edit.last_name}, #{@scholar_edit.first_name}")
   end
 
   # POST /scholar_edits
   # POST /scholar_edits.json
   def create
     @scholar_edit = ScholarEdit.new(scholar_edit_params)
-
     respond_to do |format|
       if @scholar_edit.save
+        Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                          "Scholar Edit submitted (ScholarEditsController#create): " +
+                          "id: #{@scholar_edit.id}; scholar_id: #{@scholar_edit.scholar_id}; " +
+                          "Original name: #{@scholar_edit.scholar.last_name}, #{@scholar_edit.scholar.first_name}; " +
+                          "Scholar Edit name: #{@scholar_edit.last_name}, #{@scholar_edit.first_name}")
         format.html { redirect_to scholars_path,
                                   notice: 'Your scholar edit has been submitted successfully and is awaiting approval by an administrator.' }
         # format.html { redirect_to @scholar_edit, notice: 'ScholarEdit was successfully created.' }
@@ -78,6 +92,11 @@ class ScholarEditsController < ApplicationController
         reject_attributes = ['id', 'scholar_id','created_at', 'updated_at']
         scholar.update(@scholar_edit.attributes.slice(*(ScholarEdit.attribute_names - reject_attributes)))
         @scholar_edit.destroy
+        Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                          "Scholar Edit approved (ScholarEditsController#update): " +
+                          "id: #{@scholar_edit.id}; scholar_id: #{@scholar_edit.scholar_id}; " +
+                          "Original name: #{@scholar_edit.scholar.last_name}, #{@scholar_edit.scholar.first_name}; " +
+                          "Scholar Edit name: #{@scholar_edit.last_name}, #{@scholar_edit.first_name}")
         format.html { redirect_to scholar_edits_url,
                                   notice: "The scholar edit has been approved. The associated scholar's public-facing information has been updated." }
         format.json { render :show, status: :ok, location: @scholar_edit }
@@ -92,6 +111,11 @@ class ScholarEditsController < ApplicationController
   # DELETE /scholar_edits/1.json
   def destroy
     @scholar_edit.destroy
+    Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                      "Scholar Edit destroyed (ScholarEditsController#destroy): " +
+                      "id: #{@scholar_edit.id}; scholar_id: #{@scholar_edit.scholar_id}; " +
+                      "Original name: #{@scholar_edit.scholar.last_name}, #{@scholar_edit.scholar.first_name}; " +
+                      "Scholar Edit name: #{@scholar_edit.last_name}, #{@scholar_edit.first_name}")
     respond_to do |format|
       format.html { redirect_to scholar_edits_url, notice: 'Scholar edit rejected.' }
       format.json { head :no_content }

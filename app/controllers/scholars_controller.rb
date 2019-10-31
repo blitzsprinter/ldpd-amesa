@@ -79,6 +79,8 @@ class ScholarsController < ApplicationController
   # GET /scholars/new
   def new
     @scholar = Scholar.new
+    Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                      "Processing Scholar Submission (ScholarsController#new)")
   end
 
   # GET /scholars/1/edit
@@ -89,9 +91,11 @@ class ScholarsController < ApplicationController
   # POST /scholars.json
   def create
     @scholar = Scholar.new(scholar_params)
-
     respond_to do |format|
       if @scholar.save
+        Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                          "Scholar created (ScholarsController#create): " +
+                          "id: #{@scholar.id}; Name: #{@scholar.last_name}, #{@scholar.first_name}; Approved: #{@scholar.approved}")
         format.html { redirect_to scholars_url,
                                   notice: 'Thank you for submitting a new scholar entry. Your entry is awaiting approval by an administrator.' }
         format.json { render :show, status: :created, location: @scholar }
@@ -107,6 +111,9 @@ class ScholarsController < ApplicationController
   def update
     respond_to do |format|
       if @scholar.update(scholar_params)
+        Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                          "Scholar approved (ScholarsController#update): " +
+                          "id: #{@scholar.id}; Name: #{@scholar.last_name}, #{@scholar.first_name}; Approved: #{@scholar.approved}")
         format.html { redirect_to pending_scholars_url, notice: 'The scholar has been approved.' }
         format.json { render :show, status: :ok, location: @scholar }
       else
@@ -120,9 +127,19 @@ class ScholarsController < ApplicationController
   # DELETE /scholars/1.json
   def destroy
     @scholar.destroy
+    Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
+                      "Scholar destroyed (ScholarsController#destroy): " +
+                      "(id: #{@scholar.id}): #{@scholar.last_name}, #{@scholar.first_name}; Approved: #{@scholar.approved}")
     respond_to do |format|
-      format.html { redirect_to scholars_url, notice: 'Scholar deleted.' }
-      format.json { head :no_content }
+      if @scholar.approved
+        # Deleting an approved Scholar, so redirect to scholars index
+        format.html { redirect_to scholars_url, notice: 'Scholar deleted.' }
+        format.json { head :no_content }
+      else
+        # Deleting a Pending (non-approved) Scholar, so redirect to pending_scholars index
+        format.html { redirect_to pending_scholars_url, notice: 'Pending Scholar deleted.' }
+        format.json { head :no_content }
+      end
     end
   end
 
