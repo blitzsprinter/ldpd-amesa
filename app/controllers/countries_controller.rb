@@ -14,9 +14,12 @@ class CountriesController < ApplicationController
   end
 
   # GET /countries/new
-  def new
-    @country = Country.new
-  end
+  # fcd1, 11/01/19: un-comment this if want to add a new country in local dev
+  # In production, admins should never be creating a new country via this action due
+  # to constraints from the legacy app (country code = id in database table)
+#  def new
+#    @country = Country.new
+#  end
 
   # GET /countries/1/edit
   def edit
@@ -24,19 +27,21 @@ class CountriesController < ApplicationController
 
   # POST /countries
   # POST /countries.json
-  def create
-    @country = Country.new(country_params)
-
-    respond_to do |format|
-      if @country.save
-        format.html { redirect_to @country, notice: 'Country was successfully created.' }
-        format.json { render :show, status: :created, location: @country }
-      else
-        format.html { render :new }
-        format.json { render json: @country.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # fcd1, 11/01/19: un-comment this if want to add a new country in local dev
+  # In production, admins should never be creating a new country via this action due
+  # to constraints from the legacy app (country code = id in database table)
+#  def create
+#    @country = Country.new(country_params)
+#    respond_to do |format|
+#      if @country.save
+#        format.html { redirect_to @country, notice: 'Country was successfully created.' }
+#        format.json { render :show, status: :created, location: @country }
+#      else
+#        format.html { render :new }
+#        format.json { render json: @country.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
 
   # PATCH/PUT /countries/1
   # PATCH/PUT /countries/1.json
@@ -54,13 +59,18 @@ class CountriesController < ApplicationController
 
   # DELETE /countries/1
   # DELETE /countries/1.json
-  def destroy
-    @country.destroy
-    respond_to do |format|
-      format.html { redirect_to countries_url, notice: 'Country was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # fcd1, 11/01/19: un-comment this if want to delete an existing country in local dev
+  # In production, admins should never be deleting an existing country due to constraints
+  # inherited from the legacy app, where each existing scholar in the database
+  # points to a required entry to the countries table. What would happen to all scholars
+  # that point to the deleted country
+#  def destroy
+#    @country.destroy
+#    respond_to do |format|
+#      format.html { redirect_to countries_url, notice: 'Country was successfully destroyed.' }
+#      format.json { head :no_content }
+#    end
+#  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

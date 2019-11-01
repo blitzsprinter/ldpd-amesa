@@ -34,11 +34,6 @@ class ScholarEditsController < ApplicationController
     @scholar_edits = ScholarEdit.all.order(sort_order).page params[:page]
   end
 
-  # GET /scholar_edits/1
-  # GET /scholar_edits/1.json
-  def show
-  end
-
   # GET /scholar_edits/new
   def new
     scholar = Scholar.find(params[:scholar_id])

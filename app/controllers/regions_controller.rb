@@ -13,10 +13,13 @@ class RegionsController < ApplicationController
   def show
   end
 
+  # fcd1, 11/01/19: un-comment this if want to add a new region in local dev
+  # In production, admins should never be creating a new region via this action due
+  # to the fact that the regions are set and should not be changed
   # GET /regions/new
-  def new
-    @region = Region.new
-  end
+#  def new
+#    @region = Region.new
+#  end
 
   # GET /regions/1/edit
   def edit
@@ -24,19 +27,21 @@ class RegionsController < ApplicationController
 
   # POST /regions
   # POST /regions.json
-  def create
-    @region = Region.new(region_params)
-
-    respond_to do |format|
-      if @region.save
-        format.html { redirect_to @region, notice: 'Region was successfully created.' }
-        format.json { render :show, status: :created, location: @region }
-      else
-        format.html { render :new }
-        format.json { render json: @region.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # fcd1, 11/01/19: un-comment this if want to add a new region in local dev
+  # In production, admins should never be creating a new region via this action due
+  # to the fact that the regions are set and should not be changed
+#  def create
+#    @region = Region.new(region_params)
+#    respond_to do |format|
+#      if @region.save
+#        format.html { redirect_to @region, notice: 'Region was successfully created.' }
+#        format.json { render :show, status: :created, location: @region }
+#      else
+#        format.html { render :new }
+#        format.json { render json: @region.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
 
   # PATCH/PUT /regions/1
   # PATCH/PUT /regions/1.json
@@ -54,13 +59,18 @@ class RegionsController < ApplicationController
 
   # DELETE /regions/1
   # DELETE /regions/1.json
-  def destroy
-    @region.destroy
-    respond_to do |format|
-      format.html { redirect_to regions_url, notice: 'Region was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # fcd1, 11/01/19: un-comment this if want to delete an existing region in local dev
+  # In production, admins should never be deleting an existing region due to constraints
+  # inherited from the legacy app, where each existing scholar in the database
+  # points to a required entry to the regions table. What would happen to all scholars
+  # that point to the deleted region
+#  def destroy
+#    @region.destroy
+#    respond_to do |format|
+#      format.html { redirect_to regions_url, notice: 'Region was successfully destroyed.' }
+#      format.json { head :no_content }
+#    end
+#  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

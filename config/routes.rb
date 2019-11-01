@@ -9,13 +9,19 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'pages/search'
   get 'pages/join'
-  resources :regions
-  resources :countries
+  resources :regions, except: [:new, :create, :destroy]
+  resources :countries, except: [:new, :create, :destroy]
   resources :scholars
   resources :pending_scholars, only: [:index, :edit]
   resources :scholar_edits, except: [:show]
   get '/scholars/regions/:id', to: 'scholars#by_region_of_study', as: 'by_regions'
-  get '/scholars/view/:id', to: 'scholars#show'
   get 'search', to: 'scholars#search', as: 'search'
+  # fcd1, 11/01/19: Following routes accommodate urls from the legacy app
+  # BEGIN>>>>
+  get '/scholars/view/:id', to: 'scholars#show'
+  get '/scholars/index/africa', to: 'scholars#by_region_of_study', id: 1
+  get '/scholars/index/middle_east', to: 'scholars#by_region_of_study', id: 2
+  get '/scholars/index/south_asia', to: 'scholars#by_region_of_study', id: 3
+  # <<<<<<END
   root 'pages#home'
 end

@@ -3,8 +3,6 @@ class PendingScholarsController < ApplicationController
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
   before_action :set_sort_direction, only: [:index]
 
-  # GET /scholars
-  # GET /scholars.json
   def index
     sort_order = params[:sort] || 'last_name ASC'
     # Note: all bools indicating whether sort order is ascending or not are
@@ -34,40 +32,10 @@ class PendingScholarsController < ApplicationController
     @pending_scholars = Scholar.all.where("approved = ?", false).order(sort_order).page params[:page]
   end
 
-  # GET /scholars/1
-  # GET /scholars/1.json
-  def show
-    Rails.logger.warn('!!!!!!!!!! PendingScholarsController#show !!!!!!!!!!')
-  end
-
-  # GET /scholars/new
-  def new
-    Rails.logger.warn('!!!!!!!!!! PendingScholarsController#new !!!!!!!!!!')
-  end
-
-  # GET /scholars/1/edit
   def edit
         Rails.logger.warn((current_user ? "(uid: #{current_user.uid}) " : '(no user logged in) ') +
                           "Reviewing Pending Scholar (PendingScholarsController#edit): " +
                           "id: #{@pending_scholar.id}; Name: #{@pending_scholar.last_name}, #{@pending_scholar.first_name}; Approved: #{@pending_scholar.approved}")
-  end
-
-  # POST /scholars
-  # POST /scholars.json
-  def create
-    Rails.logger.warn('!!!!!!!!!! PendingScholarsController#create !!!!!!!!!!')
-  end
-
-  # PATCH/PUT /scholars/1
-  # PATCH/PUT /scholars/1.json
-  def update
-    Rails.logger.warn('!!!!!!!!!! PendingScholarsController#update !!!!!!!!!!')
-  end
-
-  # DELETE /scholars/1
-  # DELETE /scholars/1.json
-  def destroy
-    Rails.logger.warn('!!!!!!!!!! PendingScholarsController#destroy !!!!!!!!!!')
   end
 
   private

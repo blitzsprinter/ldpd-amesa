@@ -1,5 +1,5 @@
 class ScholarsController < ApplicationController
-  before_action :verify_logged_in_with_admin_privs, only: [:update, :destroy]
+  before_action :verify_logged_in_with_admin_privs, only: [:update, :destroy, :edit]
   before_action :set_scholar, only: [:show, :edit, :update, :destroy]
   before_action :set_sort_direction, only: [:index, :by_region_of_study]
 
