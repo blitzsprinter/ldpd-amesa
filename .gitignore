@@ -28,7 +28,7 @@
 /config/master.key
 
 # Ignore following config files
-config/admins.yml
+config/amesa.yml
 
 /public/packs
 /public/packs-test

@@ -3,13 +3,15 @@
     <li class="nav-header">AMESA</li>
     <li class="nav-item"><a href="/">Home</a></li>
     <li class="nav-item"><a href="/pages/about">About AMESA</a></li>
-    <li class="nav-item"><%= link_to 'Submit A New Entry', new_scholar_path %></li>
+    <% if CONFIGS[:submit_new_scholar] %>
+      <%= content_tag(:li, link_to('Submit A New Entry', new_scholar_path), class: 'nav-item') %>
+    <% end %>
     <li class="nav-header">View Scholars</li>
     <li class="nav-item"><a href="/scholars">All Regions</a></li>
     <li class="nav-item"><%= link_to "Africa", by_regions_path(id: '1') %></li>
     <li class="nav-item"><%= link_to "Middle East", by_regions_path(id: '2') %></li>
     <li class="nav-item"><%= link_to "South Asia", by_regions_path(id: '3') %></li>
-    <% if user_signed_in? && ADMINS.exclude?(current_user.uid) %>
+    <% if user_signed_in? && CONFIGS[:admins].exclude?(current_user.uid) %>
       <li class="nav-header">User</li>
     <% else %>
       <li class="nav-header">Admin</li>
