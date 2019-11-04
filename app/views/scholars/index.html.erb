@@ -25,8 +25,8 @@
                    locals: { scholar: scholar }
         %>
         <td class="scholar-actions">
-          <%= link_to 'View Scholar', scholar_path(scholar.id), class: 'btn-sm' %>
-          <%= link_to 'Delete', scholar, method: :delete,
+          <%= link_to t('action_buttons.view_scholar'), scholar_path(scholar.id), class: 'btn-sm' %>
+          <%= link_to t('action_buttons.delete'), scholar, method: :delete,
                                 data: { confirm: "Are you sure you want to delete '#{scholar.last_name}, #{scholar.first_name}'?" },
                                 class: 'btn-sm btn-danger' if amesa_admin_privs? %>
 	</td>

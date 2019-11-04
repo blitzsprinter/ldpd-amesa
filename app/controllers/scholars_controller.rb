@@ -74,6 +74,27 @@ class ScholarsController < ApplicationController
   # GET /scholars/1
   # GET /scholars/1.json
   def show
+    # The following array contains, in the order they will be displayed in the
+    # the show view, the field labels and field values -- each
+    # field label, field value] pair is contained within a 2-element array
+    @field_names_values =
+      [ [t('scholar.region_of_interest'),
+         params[:locale] == 'fr' ? @scholar.region.name_fra : @scholar.region.name_eng ],
+        [t('scholar.primary_country_of_residence'),
+         params[:locale] == 'fr' ? @scholar.country.name_fra : @scholar.country.name_eng],
+        [t('scholar.title'), @scholar.title],
+        [t('scholar.affiliation'), @scholar.affiliation],
+        [t('scholar.email'), @scholar.email],
+        [t('scholar.mailing_address'), @scholar.mailing_address],
+        [t('scholar.phone_fax_numbers'), @scholar.phone_fax_numbers],
+        [t('scholar.website'), @scholar.website],
+        [t('scholar.countries_of_specialization'), @scholar.countries_of_specialization],
+        [t('scholar.education'), @scholar.education],
+        [t('scholar.research_interests'), @scholar.research_interests],
+        [t('scholar.teaching_interests'), @scholar.teaching_interests],
+        [t('scholar.publications'), @scholar.publications],
+        [t('scholar.keywords'), @scholar.keywords]
+      ]
   end
 
   # GET /scholars/new

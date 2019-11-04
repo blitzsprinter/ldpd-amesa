@@ -1,0 +1,92 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+fr:
+  sidebar:
+    about_amesa: "A Propos D'AMESA"
+    admin_header: "ADMIN"
+    africa: "l'Afriquie"
+    all_regions: "Toutes Les Regions"
+    english: "English"
+    french: "Francais"
+    home: "Page d'Acceuil"
+    language_header: "LANGUAGE"
+    login: "Connecter"
+    logout: 'Déconnexion'
+    middle_east: "Moyen-Orient"
+    south_asia: "Asie du Sud"
+    submit_a_new_entry: "Ajouter une Nouvelle Entrée"
+    view_scholars_header: "Regarder les Entrées"
+    admin:
+      country_manager: 'Regler les Pays'
+      pending_scholars:	"Entrées en suspens"
+      pending_scholar_edits: 'Modification aux entrées en suspens'
+      region_manager: 'Regler les Regions'
+  table:
+    header:
+      country_of_residence: 'Pays&nbsp;de&nbsp;résidence'
+      first_name: 'Prénom'
+      last_name: 'Nom'
+      region_of_study: 'Domaine&nbsp;de&nbsp;recherche'
+  action_buttons:
+    approve_edit: 'Approve Edit'
+    delete: 'Delete'
+    edit: 'Edit'
+    reject_edit: 'Reject Edit'
+    review: 'Review'
+    search: "Rechercher"
+    submit: "Soumettre"
+    submit_an_edit: "Soumettre une modification"
+    view_page: "Regarder la page"
+    view_scholar: "Regarder les Entrées"
+  scholar:
+    affiliation: 'Affiliation'
+    countries_of_specialization: 'Pays de spécialisation'
+    education: 'Éducation'
+    email: 'Adresse électronique'
+    first_name:	'Prénom'
+    keywords: 'Mots-clés'
+    last_name: 'Nom'
+    mailing_address: 'Adresse'
+    optional_message: "Message facultatif aux administrateurs d'AMESA"
+    phone_fax_numbers: 'Téléphone/Télécopie'
+    primary_country_of_residence: 'Pays de résidence'
+    publications: 'Publications'
+    region_of_interest: 'Domaine de recherche'
+    research_interests:	'Recherche'
+    teaching_interests:	'Enseignement'
+    submitter_email: "Adresse électronique de l'envoyé (Laisser vide si vous êtes le nouveau chercheur/la nouvelle chercheuse que vous ajoutez.)"
+    title: 'Titre'
+    website: 'Site de web'
+  scholar_form:
+    required_field_msg: 'Indicates Required Field'
+    select_primary_country_of_residence_prompt: 'Choisir un pays'
+    select_region_of_interest_prompt: 'Choisir une région'

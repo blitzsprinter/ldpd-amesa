@@ -1,0 +1,92 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  sidebar:
+    about_amesa: 'About AMESA'
+    admin_header: 'ADMIN'
+    africa: 'Africa'
+    all_regions: 'All Regions'
+    english: 'English'
+    french: 'Francais'
+    home: 'Home'
+    language_header: 'LANGUAGE'
+    login: 'Login'
+    logout: 'Logout'
+    middle_east: 'Middle East'
+    south_asia: 'South Asia'
+    submit_a_new_entry: 'Submit A New Entry'
+    view_scholars_header: 'View Scholars'
+    admin:
+      country_manager: 'Country Manager'
+      pending_scholars: 'Pending Scholars'
+      pending_scholar_edits: 'Pending Scholar Edits'
+      region_manager: 'Region Manager'
+  table:
+    header:
+      country_of_residence: 'Primary&nbsp;country&nbsp;of&nbsp;residence'
+      first_name: 'First&nbsp;name'
+      last_name: 'Last&nbsp;name'
+      region_of_study: 'Region&nbsp;of&nbsp;study'
+  action_buttons:
+    approve_edit: 'Approve Edit'
+    delete: 'Delete'
+    edit: 'Edit'
+    reject_edit: 'Reject Edit'
+    review: 'Review'
+    search: 'Search'
+    submit: 'Submit'
+    submit_an_edit: 'Submit an Edit'
+    view_page: 'View Page'
+    view_scholar: 'View Scholar'
+  scholar:
+    affiliation: 'Affiliation'
+    countries_of_specialization: 'Countries of Specialization'
+    education: 'Education'
+    email: 'Email'
+    first_name: 'First Name'
+    keywords: 'Keywords'
+    last_name: 'Last Name'
+    mailing_address: 'Mailing Address'
+    optional_message: 'Optional Message To AMESA Administrators'
+    phone_fax_numbers: 'Phone/Fax Number(s)'
+    primary_country_of_residence: 'Primary Country of Residence'
+    publications: 'Publications'
+    region_of_interest: 'Region of Interest'
+    research_interests: 'Research Interests'
+    teaching_interests: 'Teaching Interests'
+    submitter_email: "Recommender's Email (Leave blank if you are submitting/editing your own entry)"
+    title: 'Title'
+    website: 'Websites'
+  scholar_form:
+    required_field_msg: 'Indicates Required Field'
+    select_primary_country_of_residence_prompt: 'Choose a Country'
+    select_region_of_interest_prompt: 'Choose a Region'

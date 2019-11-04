@@ -1,27 +1,11 @@
 <hr>
-<p>* Indicates Required Field</p>
 <p class="submitter-msg"><strong>Message from scholar submitter:</strong> <%= @pending_scholar.optional_message %></p>
+<p>* <%= t('scholar_form.required_field_msg') %></p>
 <%= form_with(model: scholar, local: true) do |form| %>
-  <% if scholar.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(scholar.errors.count, "error") %> prohibited this scholar from being saved:</h2>
-      <ul>
-        <% scholar.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form.hidden_field(:approved, value: true) %>
-  <div class="form-group">
-    <%= form.label 'Region of Interest' %>
-    <%= collection_select(:pending_scholar, :region_id, Region.all, :id, :name_eng, prompt: true) %>
-  </div>
-  <div class="form-group">
-    <%= form.label 'Primary Country of Residence' %>
-    <%= collection_select(:pending_scholar, :country_id, Country.all, :id, :name_eng, prompt: true) %>
-  </div>
+  <%= render partial: 'shared/scholar_form_errors', locals: {form: form, scholar: scholar} %>
+  <%= render partial: 'shared/scholar_form_common_select_fields', locals: {form: form, select_from_model: :pending_scholar} %>
   <%= render partial: 'shared/scholar_form_common_text_fields', locals: {form: form} %>
+  <%= form.hidden_field(:approved, value: true) %>
   <div class="actions">
     <%= form.submit 'Approve' %>
   </div>

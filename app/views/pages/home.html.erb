@@ -1,42 +1,15 @@
 <%= render partial: 'banner' %>
 <div class="row home-page">
   <div class="col">
-    <h2>About</h2>
-    <p>
-      AMESA is a free online international directory containing records of
-      individuals who have identified themselves as being involved in any aspect
-      of scholarship in the fields of African Studies, Middle Eastern Studies or
-      South Asian Studies. AMESA was launched on the web in September 2013.
-    </p>
-    <a href="/pages/about" class="btn-sm">More About AMESA</a>
+    <%= render partial: 'home_about' %>
   </div>
   <div class="col">
-    <h2>Search</h2>
-    <p>
-      Search by name or keyword anywhere (e.g. subject of interest, city or
-      country, university or affiliation, etc.) in English or French.
-    </p>
-    <a href="" class="btn-sm">Perform A Search</a>
+    <%= render partial: 'home_search' %>
   </div>
   <div class="col">
-    <h2>Join</h2>
-    <p>
-      Submit your new entry, update an existing entry, or recommend another
-      scholar for inclusion (with his/her approval)
-    </p>
-    <a href="/scholars/new" class="btn-sm">Submit A New Scholar</a>
+    <%= render partial: 'home_join' %>
   </div>
   <div class="col">
-    <h2>Contact Us</h2>
-    <p>
-      Global Studies Division
-      <br />
-      Columbia University Libraries
-      <br />
-      e-mail: <a href="mailto:amesa@libraries.cul.columbia.edu">amesa@libraries.cul.columbia.edu</a>
-      <br />
-      phone: 212-854-8045
-    </p>
-    <a href="" class="btn-sm">Send an Email</a>
+    <%= render partial: 'home_contact' %>
   </div>
 </div>

@@ -1,64 +1,64 @@
   <div class="form-group">
-    <%= form.label :first_name, 'First Name *' %>
+    <%= form.label :first_name, "#{t('scholar.first_name')} *" %>
     <%= form.text_field :first_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :last_name, 'Last Name *' %>
+    <%= form.label :last_name, "#{t('scholar.last_name')} *" %>
     <%= form.text_field :last_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :title %>
+    <%= form.label :title, "#{t('scholar.title')}" %>
     <%= form.text_field :title, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :affiliation %>
+    <%= form.label :affiliation, "#{t('scholar.affiliation')}" %>
     <%= form.text_area :affiliation, class: "form-control", size: "60x12" %>
   </div>
   <div class="form-group">
-    <%= form.label :email, 'Email *' %>
+    <%= form.label :email, "#{t('scholar.email')} *'"%>
     <%= form.text_field :email, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :mailing_address %>
+    <%= form.label :mailing_address, "#{t('scholar.mailing_address')}" %>
     <%= form.text_area :mailing_address, class: "form-control", size: "60x12" %>
   </div>
   <div class="form-group">
-    <%= form.label :phone_fax_numbers %>
+    <%= form.label :phone_fax_numbers, "#{t('scholar.phone_fax_numbers')}" %>
     <%= form.text_area :phone_fax_numbers, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :website %>
+    <%= form.label :website, "#{t('scholar.website')}" %>
     <%= form.text_field :website, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :countries_of_specialization %>
+    <%= form.label :countries_of_specialization, "#{t('scholar.countries_of_specialization')}" %>
     <%= form.text_area :countries_of_specialization, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :education %>
+    <%= form.label :education, "#{t('scholar.education')}" %>
     <%= form.text_area :education, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :research_interests %>
+    <%= form.label :research_interests, "#{t('scholar.research_interests')}" %>
     <%= form.text_area :research_interests, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :teaching_interests %>
+    <%= form.label :teaching_interests, "#{t('scholar.teaching_interests')}" %>
     <%= form.text_area :teaching_interests, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :publications, 'Publications *' %>
+    <%= form.label :publications, "#{t('scholar.publications')} *" %>
     <%= form.text_area :publications, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :keywords %>
+    <%= form.label :keywords, "#{t('scholar.keywords')}" %>
     <%= form.text_field :keywords, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :optional_message, "Optional Message To AMESA Administrators" %>
+    <%= form.label :optional_message, "#{t('scholar.optional_message')}" %>
     <%= form.text_area :optional_message, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :submitter_email, "Recommender's Email (Leave blank if you are submitting/editing your own entry)" %>
+    <%= form.label :submitter_email, "#{t('scholar.submitter_email')}" %>
     <%= form.text_field :submitter_email, class: "form-control" %>
   </div>

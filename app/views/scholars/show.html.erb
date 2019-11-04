@@ -1,40 +1,21 @@
 <div class="scholar-actions">
-  <%= link_to 'Delete', @scholar, method: :delete,
+  <%= link_to t('action_buttons.delete'), @scholar, method: :delete,
                                  data: { confirm: 'Are you sure?' },
                                  class: 'btn-sm btn-danger float-right' if amesa_admin_privs?
       %>
   <% if amesa_admin_privs? %>
-    <%= link_to 'Edit', edit_scholar_path, class: "btn-sm float-right" %>
+    <%= link_to t('action_buttons.edit'), edit_scholar_path, class: "btn-sm float-right" %>
   <% elsif CONFIGS[:submit_scholar_edit] %>
-    <%= link_to('Submit an Edit',
+    <%= link_to(t('action_buttons.submit_an_edit'),
                 new_scholar_edit_path(scholar_id: @scholar.id),
                 class: "btn-sm float-right")
     %>
   <% end %>
 </div>
 <h2 class="scholar-name"><%= @scholar.first_name %> <%= @scholar.last_name %></h2>
-<%
-  # The following arraay contains, in the oder they will be displayed in the
-  # table below, the field names andfield values -- each [field name, field value]
-  # pair is contained within a 2-element array
-  field_names_values = [ ['Region of Study', @scholar.region.name_eng],
-  ['Primary Country of Residence', @scholar.country.name_eng],
-  ['Title', @scholar.title],
-  ['Affiliation', @scholar.affiliation],
-  ['Email', @scholar.email],
-  ['Mailing Address', @scholar.mailing_address],
-  ['Phone / Fax Number(s)', @scholar.phone_fax_numbers],
-  ['Website', @scholar.website],
-  ['Countries Of Specialization', @scholar.countries_of_specialization],
-  ['Education', @scholar.education],
-  ['Research Interests', @scholar.research_interests],
-  ['Teaching Interests', @scholar.teaching_interests],
-  ['Publications', @scholar.publications],
-  ['Keywords',  @scholar.keywords] ]
-%>
 <table class="table table-bordered">
   <tbody>
-    <% field_names_values.each do |name, value| %>
+    <% @field_names_values.each do |name, value| %>
          <%= content_tag :tr do
             content_tag(:td, name) +
             content_tag(:td, simple_format(value))

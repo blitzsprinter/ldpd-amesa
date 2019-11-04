@@ -1,0 +1,12 @@
+<div class="form-group">
+  <%= form.label "#{t('scholar.region_of_interest')} *" %>
+  <br>
+  <%= collection_select(select_from_model, :region_id, Region.all, :id, :name_eng,
+                        prompt: t('scholar_form.select_region_of_interest_prompt')) %>
+</div>
+<div class="form-group">
+  <%= form.label "#{t('scholar.primary_country_of_residence')} *" %>
+  <br>
+  <%= collection_select(select_from_model, :country_id, Country.all, :id, :name_eng,
+                        prompt: t('scholar_form.select_primary_country_of_residence_prompt')) %>
+</div>

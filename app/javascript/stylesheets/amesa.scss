@@ -13,7 +13,7 @@
     }
 }
 
-.country-actions, .region-actions, .scholar-actions {
+.country-actions, .region-actions, .scholar-actions, .language-actions {
     text-align: center;
     a, a:visited, a:hover, a:active {
 	color: #0088cc;
@@ -36,10 +36,9 @@
     }
 }
 
-.language-select {
+.language-actions {
     .btn-sm {
-	border: 1px solid;
-	margin: 0.5em;
+	margin: 1em;
     }
 }
 

@@ -1,14 +1,37 @@
-<%= render partial: 'scholars_list', locals: {
-    scholars: @scholars_in_region_of_study,
-    header_url_path_helper: :by_regions_path,
-    sort_column: @sort_column,
-    sort_direction: @sort_direction,
-    last_name_sort_ascend: @last_name_sort_ascend,
-    last_name_header_class: @last_name_header_class,
-    first_name_sort_ascend: @first_name_sort_ascend,
-    first_name_header_class: @first_name_header_class,
-    region_of_study_sort_ascend: @region_of_study_sort_ascend,
-    region_of_study_header_class: @region_of_study_header_class,
-    primary_country_of_residence_sort_ascend: @primary_country_of_residence_sort_ascend,
-    primary_country_of_residence_header_class: @primary_country_of_residence_header_class } %>
+<h1>Scholars</h1>
+<table class="table table-bordered scholars-list">
+  <thead>
+    <tr>
+      <%= render partial: 'shared/scholars_table_common_headers',
+                 locals: { header_url_path_helper: :by_regions_path,
+                           sort_column: @sort_column,
+                           sort_direction: @sort_direction,
+                           last_name_sort_ascend: @last_name_sort_ascend,
+                           last_name_header_class: @last_name_header_class,
+                           first_name_sort_ascend: @first_name_sort_ascend,
+                           first_name_header_class: @first_name_header_class,
+                           region_of_study_sort_ascend: @region_of_study_sort_ascend,
+                           region_of_study_header_class: @region_of_study_header_class,
+                           primary_country_of_residence_sort_ascend: @primary_country_of_residence_sort_ascend,
+                           primary_country_of_residence_header_class: @primary_country_of_residence_header_class }
+      %>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scholars_in_region_of_study.each do |scholar| %>
+      <tr>
+        <%= render partial: 'shared/scholars_table_common_data_cells',
+                   locals: { scholar: scholar }
+        %>
+        <td class="scholar-actions">
+          <%= link_to t('action_buttons.view_scholar'), scholar_path(scholar.id), class: 'btn-sm' %>
+          <%= link_to t('action_buttons.delete'), scholar, method: :delete,
+                                data: { confirm: "Are you sure you want to delete '#{scholar.last_name}, #{scholar.first_name}'?" },
+                                class: 'btn-sm btn-danger' if amesa_admin_privs? %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= paginate @scholars_in_region_of_study %>

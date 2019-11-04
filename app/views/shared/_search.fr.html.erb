@@ -1,0 +1,6 @@
+<div class="card card-small">
+  <%= form_with url: search_path, method: :get, local: true do |form| %>
+    <%= form.text_field :search_term, placeholder: "Recherche pour les chercheurs..." %>
+    <%= form.submit 'Rechercher' %>
+  <% end %>
+</div>
