@@ -1,6 +1,6 @@
 <div class="card card-small">
   <%= form_with url: search_path, method: :get, local: true do |form| %>
-    <%= form.text_field :search_term, placeholder: "Search for scholars..." %>
-    <%= form.submit 'Search' %>
+    <%= form.submit 'Search', style: "float: right;" %>
+    <%= form.text_field :search_term, placeholder: "Search for scholars...", style: "float: right;width:50%" %>
   <% end %>
 </div>
