@@ -1,6 +1,23 @@
 <div class="card card-small">
-  <%= form_with url: search_path, method: :get, local: true do |form| %>
-    <%= form.submit 'Search', style: "float: right;" %>
-    <%= form.text_field :search_term, placeholder: "Search for scholars...", style: "float: right;width:50%" %>
+  <% case CONFIGS[:search_engine] %>
+  <% when 'gcs' %>
+    <%= form_with url: gcs_search_path, method: :get, local: true do |form| %>
+      <%= form.submit 'Search', style: "float: right;" %>
+      <%= form.text_field :q, placeholder: "Search for scholars...", style: "float: right;width:50%" %>
+    <% end %>
+  <% when 'names_db' %>
+    <% # search the first_name and last_name columns in the db %>
+    <%= form_with url: search_path, method: :get, local: true do |form| %>
+      <%= form.submit 'Search', style: "float: right;" %>
+      <%= form.text_field :search_term, placeholder: "Search for scholars...", style: "float: right;width:50%" %>
+    <% end %>
+  <% when 'none' %>
+    <% # search is turned off %>
+  <% else %>
+    <% # default to searching the names in the db %>
+    <%= form_with url: search_path, method: :get, local: true do |form| %>
+      <%= form.submit 'Search', style: "float: right;" %>
+      <%= form.text_field :search_term, placeholder: "Search for scholars...", style: "float: right;width:50%" %>
+    <% end %>
   <% end %>
 </div>

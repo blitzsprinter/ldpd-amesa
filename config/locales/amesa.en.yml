@@ -67,6 +67,7 @@ en:
     submit_an_edit: 'Submit an Edit'
     view_page: 'View Page'
     view_scholar: 'View Scholar'
+  search_field_placeholder: 'Search for scholars...'
   scholar:
     affiliation: 'Affiliation'
     countries_of_specialization: 'Countries of Specialization'

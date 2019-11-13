@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :scholar_edits, except: [:show]
   get '/scholars/regions/:id', to: 'scholars#by_region_of_study', as: 'by_regions'
   get 'search', to: 'scholars#search', as: 'search'
+  # Google Custom Search
+  get 'gcssearch', to: 'scholars#gcs_search', as: 'gcs_search'
   # fcd1, 11/01/19: Following routes accommodate urls from the legacy app
   # BEGIN>>>>
   get '/scholars/view/:id', to: 'scholars#show'

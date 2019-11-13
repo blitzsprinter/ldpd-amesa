@@ -67,6 +67,7 @@ fr:
     submit_an_edit: "Soumettre une modification"
     view_page: "Regarder la page"
     view_scholar: "Regarder les Entrées"
+  search_field_placeholder: 'Recherche pour les chercheurs...'
   scholar:
     affiliation: 'Affiliation'
     countries_of_specialization: 'Pays de spécialisation'

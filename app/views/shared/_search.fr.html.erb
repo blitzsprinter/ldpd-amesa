@@ -4,3 +4,9 @@
     <%= form.text_field :search_term, placeholder: "Recherche pour les chercheurs...", style: "float: right;width:50%" %>
   <% end %>
 </div>
+<div class="card card-small">
+  <%= form_with url: gcs_search_path, method: :get, local: true do |form| %>
+    <%= form.submit 'Rechercher', style: "float: right;" %>
+    <%= form.text_field :q, placeholder: "Recherche pour les chercheurs...", style: "float: right;width:50%" %>
+  <% end %>
+</div>
