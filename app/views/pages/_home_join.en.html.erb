@@ -3,4 +3,6 @@
   Submit your new entry, update an existing entry, or recommend another
   scholar for inclusion (with his/her approval).
 </p>
-<a href="<%= new_scholar_path %>" class="btn-sm">Submit A New Scholar</a>
+<% if CONFIGS[:submit_new_scholar] %>
+  <a href="<%= new_scholar_path %>" class="btn-sm">Submit A New Scholar</a>
+<% end %>

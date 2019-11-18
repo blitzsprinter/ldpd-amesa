@@ -4,4 +4,6 @@
   ou faire un recommandation pour une entrée au nom d’un/une
   collègue (avec son approbation).
 </p>
-<a href="<%= new_scholar_path %>" class="btn-sm">Soumettre une Scholar</a>
+<% if CONFIGS[:submit_new_scholar] %>
+  <a href="<%= new_scholar_path %>" class="btn-sm">Soumettre une Scholar</a>
+<% end %>
