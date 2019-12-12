@@ -31,13 +31,13 @@
 
 fr:
   sidebar:
-    about_amesa: "A Propos D'AMESA"
+    about_amesa: "A Propos d'AMESA"
     admin_header: "ADMIN"
-    africa: "l'Afriquie"
-    all_regions: "Toutes Les Regions"
+    africa: "l'Afrique"
+    all_regions: "Toutes les Régions"
     english: "English"
     french: "Francais"
-    home: "Page d'Acceuil"
+    home: "Page d'Accueil"
     language_header: "LANGUAGE"
     login: "Connecter"
     logout: 'Déconnexion'
