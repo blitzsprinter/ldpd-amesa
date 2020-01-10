@@ -16,9 +16,9 @@
 <table class="table table-bordered">
   <tbody>
     <% @field_names_values.each do |name, value| %>
-         <%= content_tag :tr do
-            content_tag(:td, name) +
-            content_tag(:td, simple_format(value))
-          end unless value.blank? %>
+      <%= content_tag :tr do
+        content_tag(:td, name) +
+        content_tag(:td, simple_format(value))
+      end unless value.blank? %>
     <% end %>
 </table>
