@@ -2,11 +2,8 @@
   <div class="card card-small">
     <% case CONFIGS[:search_engine] %>
     <% when 'gcs' %>
-      <% # use Google Custom Search %>
-      <%= form_with url: gcs_search_path, method: :get, local: true do |form| %>
-        <%= form.text_field :q, placeholder: t('search_field_placeholder'), style: "float:left;width:50%" %>
-        <%= form.submit t('action_buttons.search'), style: "float:right;" %>
-      <% end %>
+      <% # use Google Custom Search Element %>
+      <div class="gcse-searchbox-only" data-resultsUrl="<%= gcs_search_path %>"></div>
     <% when 'names_db' %>
       <% # search the first_name and last_name columns in the db %>
       <%= form_with url: search_path, method: :get, local: true do |form| %>
@@ -21,4 +18,5 @@
       <% end %>
     <% end %>
   </div>
+  <script async src="https://cse.google.com/cse.js?cx=018287035770092225683:42ir2lrct5u"></script>
 <% end %>
