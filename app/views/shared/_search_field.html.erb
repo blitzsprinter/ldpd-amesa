@@ -3,7 +3,7 @@
     <% case CONFIGS[:search_engine] %>
     <% when 'gcs' %>
       <% # use Google Custom Search Element %>
-      <div class="gcse-searchbox-only" data-resultsUrl="http://amesa-dev.library.columbia.edu/gcssearch"></div>
+      <div class="gcse-searchbox-only" data-resultsUrl="<%= gcs_search_path %>"></div>
     <% when 'names_db' %>
       <% # search the first_name and last_name columns in the db %>
       <%= form_with url: search_path, method: :get, local: true do |form| %>
