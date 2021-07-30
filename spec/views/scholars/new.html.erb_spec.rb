@@ -2,11 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "scholars/new", type: :view do
   before(:each) do
+    @country = assign(:country, Country.create!(
+      :name_eng => "MyString",
+      :name_fra => "MyString"))
+    @region = assign(:region, Region.create!(
+      :name_eng => "MyString",
+      :name_fra => "MyString",
+      :url_formatted_name => "MyString"))
     assign(:scholar, Scholar.new(
       :first_name => "MyString",
       :last_name => "MyString",
-      :region_of_study => "MyString",
-      :primary_country_of_residence => "MyString",
+      :region => @region,
+      :country => @country,
       :title => "MyString",
       :affiliation => "MyString",
       :email => "MyString",
@@ -33,13 +40,7 @@ RSpec.describe "scholars/new", type: :view do
 
       assert_select "input[name=?]", "scholar[last_name]"
 
-      assert_select "input[name=?]", "scholar[region_of_study]"
-
-      assert_select "input[name=?]", "scholar[primary_country_of_residence]"
-
       assert_select "input[name=?]", "scholar[title]"
-
-      assert_select "input[name=?]", "scholar[affiliation]"
 
       assert_select "input[name=?]", "scholar[email]"
 
