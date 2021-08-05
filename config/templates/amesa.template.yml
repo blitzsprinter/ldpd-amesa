@@ -1,0 +1,15 @@
+default: &default
+  admins:
+    - admin
+  submit_new_scholar: true
+  submit_scholar_edit: true
+  # search_engine choices: gcs, names_db, none
+  # gcs => Google Custom Search
+  # names_db => database search in the first_name and last_name columns
+  # none => search turned off
+  search_engine: gcs
+
+development:
+  <<: *default
+test:
+  <<: *default

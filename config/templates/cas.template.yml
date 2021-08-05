@@ -14,9 +14,6 @@ saml: &SAML
   provider: saml
   service_validate_url: /cas/samlValidate
 
-# fcd1, 10/10/19: ldpdd-key-resources uses this one line for development:
-# development: *SAML
-# fcd1, 10/10/19: AC uses the following for development:
 development:
   provider: developer
   fields:

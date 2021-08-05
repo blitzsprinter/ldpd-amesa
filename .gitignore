@@ -29,6 +29,9 @@
 
 # Ignore following config files
 config/amesa.yml
+config/cas.yml
+config/database.yml
+config/emails.yml
 
 /public/packs
 /public/packs-test
