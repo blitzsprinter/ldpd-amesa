@@ -1,4 +1,28 @@
 # ldpd-amesa
+
+## First-Time Setup (for developers)
+
+- Install ruby
+- Install NodeJS (tested with versions 8 and 10)
+- Install yarn
+
+### And then:
+
+```
+git clone git@github.com:cul/ldpd-amesa.git # Clone the repo
+cd ldpd-amesa # Switch to the application directory
+
+# Note: Assuming you're using RVM, RVM should automatically selected the correct ruby version when you cd into the project directory.  In this case, it'sspecified in Gemfile, which RVM is aware of in recent versions.  Verify that the correct version has been selected.
+
+bundle install # Install ruby gem dependencies
+yarn install # Install node module depencencies
+bundle exec rake amesa:setup:config_files # Set up required config files
+rails db:migrate RAILS_ENV=development # Run database migrations
+
+# Start the application using the rails server command
+rails s -p 3000
+```
+
 ## PHP Notes
 ### Controllers
 * Controller
