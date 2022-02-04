@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.5.3']
+        node: ['10', '12']
+    env:
+      RAILS_ENV: test
+      NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libxslt for nokogiri gem (required for version < 1.11)
+        run: sudo apt-get install -y libxml2-dev libxslt-dev
+      - name: Add --no-document option to .gemrc file to speed up bundle install
+        run: "echo 'gem: --no-document' > ~/.gemrc"
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install -g yarn
+      - run: yarn install
+      - name: Run CI task
+        run: bundle exec rake amesa:ci
