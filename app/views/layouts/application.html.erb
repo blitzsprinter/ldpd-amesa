@@ -9,7 +9,7 @@
     <!-- Not sure I need the following stylesheet_pack_tag, one video tutorial said was needed for production-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= render partial: 'google_analytics' if Rails.env.amesa_prod? %>
+    <%= render partial: 'analytics' if Rails.env.amesa_prod? %>
   </head>
   <body>
     <div style="text-align:center;">
