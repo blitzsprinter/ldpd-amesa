@@ -13,10 +13,10 @@ Bundler.require(*Rails.groups)
 module LdpdAmesa
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 7.0
 
     # Columbia CAS / omniauth
-    include Cul::Omniauth::FileConfigurable
+    include Cul::Omniauth::FileConfigurable::ClassMethods
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

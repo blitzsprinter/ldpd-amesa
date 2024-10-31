@@ -3,9 +3,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  # fcd1, 10/10/19: Need to use module Amesa instead of LdpdAmesa when I update
-  # config/application.rb
-  LdpdAmesa::Application.configure_devise_omniauth(config)
+  Rails.application.configure_devise_omniauth(config) if File.exist?(File.join(Rails.root,'config','cas.yml'))
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

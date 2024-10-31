@@ -1,10 +1,10 @@
-default: &default
+development:
   new_scholar:
     - exampleuser@example.com
   scholar_edit:
     - exampleuser@example.com
-
-development:
-  <<: *default
 test:
-  <<: *default
+  new_scholar:
+    - exampleuser@example.com
+  scholar_edit:
+    - exampleuser@example.com
